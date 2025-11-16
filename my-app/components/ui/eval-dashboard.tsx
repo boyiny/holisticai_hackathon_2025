@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import {
+  Area,
+  AreaChart,
   Bar,
   BarChart,
   CartesianGrid,
@@ -16,6 +18,7 @@ import {
   YAxis,
 } from "recharts";
 
+import { ChaosReport, ChaosSummary } from "@/lib/chaosTypes";
 import { EvalListItem, EvalReport, EvalSummary } from "@/lib/evalTypes";
 
 type Props = {
@@ -24,6 +27,7 @@ type Props = {
   initialRightId: string;
   initialLeftReport: EvalReport | null;
   initialRightReport: EvalReport | null;
+  chaosReports: ChaosReport[];
 };
 
 type MetricDef = {
@@ -46,14 +50,66 @@ const SCORECARD_ROWS: MetricDef[] = [
 
 const leftColor = "#f43f5e";
 const rightColor = "#2563eb";
+const chaosPrimary = "#7c3aed";
 
-export default function EvalCompareDashboard({
+type TabKey = "evals" | "chaos";
+
+export default function EvalDashboard({
   evals,
   initialLeftId,
   initialRightId,
   initialLeftReport,
   initialRightReport,
+  chaosReports,
 }: Props) {
+  const [tab, setTab] = useState<TabKey>("evals");
+
+  return (
+    <div className="mt-8 space-y-8">
+      <div className="flex gap-4 rounded-xl border border-border/60 bg-muted/10 p-2 text-sm font-semibold">
+        <button
+          className={`flex-1 rounded-lg px-4 py-2 ${tab === "evals" ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"}`}
+          onClick={() => setTab("evals")}
+        >
+          Eval Comparison
+        </button>
+        <button
+          className={`flex-1 rounded-lg px-4 py-2 ${tab === "chaos" ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"}`}
+          onClick={() => setTab("chaos")}
+        >
+          Chaos Tests
+        </button>
+      </div>
+      {tab === "evals" ? (
+        <EvalComparePanel
+          evals={evals}
+          initialLeftId={initialLeftId}
+          initialRightId={initialRightId}
+          initialLeftReport={initialLeftReport}
+          initialRightReport={initialRightReport}
+        />
+      ) : (
+        <ChaosDashboard reports={chaosReports} />
+      )}
+    </div>
+  );
+}
+
+type ComparePanelProps = {
+  evals: EvalListItem[];
+  initialLeftId: string;
+  initialRightId: string;
+  initialLeftReport: EvalReport | null;
+  initialRightReport: EvalReport | null;
+};
+
+function EvalComparePanel({
+  evals,
+  initialLeftId,
+  initialRightId,
+  initialLeftReport,
+  initialRightReport,
+}: ComparePanelProps) {
   const [leftId, setLeftId] = useState(initialLeftId);
   const [rightId, setRightId] = useState(initialRightId);
   const [leftReport, setLeftReport] = useState<EvalReport | null>(initialLeftReport);
@@ -325,5 +381,171 @@ function MetaStrip({ leftSummary, rightSummary }: { leftSummary: EvalSummary | n
       ))}
     </div>
   );
+}
+
+type ChaosDashboardProps = {
+  reports: ChaosReport[];
+};
+
+function ChaosDashboard({ reports }: ChaosDashboardProps) {
+  if (!reports.length) {
+    return (
+      <div className="rounded-lg border border-dashed border-muted-foreground/40 p-8 text-center text-muted-foreground">
+        No chaos test reports found under <code>data/tests</code>.
+      </div>
+    );
+  }
+
+  const chartData = reports.map((report) => ({
+    scenario: humanizeScenario(report.summary.scenario),
+    successRate: +(report.summary.success_rate * 100).toFixed(1),
+    errorRate: +(((report.summary.error_count || 0) / Math.max(1, report.summary.num_runs)) * 100).toFixed(1),
+    avgLatency: report.summary.avg_latency_ms,
+    p95Latency: report.summary.p95_latency_ms,
+  }));
+
+  return (
+    <div className="space-y-8">
+      <div className="grid gap-6 lg:grid-cols-3">
+        {reports.map((report) => (
+          <ChaosCard key={report.summary.scenario} report={report} />
+        ))}
+      </div>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <ChartCard title="Latency per Scenario (ms)">
+          <ResponsiveContainer width="100%" height={320}>
+            <BarChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="scenario" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="avgLatency" name="Avg Latency" fill={chaosPrimary} />
+              <Bar dataKey="p95Latency" name="p95 Latency" fill="#94a3b8" />
+            </BarChart>
+          </ResponsiveContainer>
+        </ChartCard>
+        <ChartCard title="Success vs Error Rate">
+          <ResponsiveContainer width="100%" height={320}>
+            <AreaChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="scenario" />
+              <YAxis domain={[0, 100]} />
+              <Tooltip />
+              <Legend />
+              <Area type="monotone" dataKey="successRate" name="Success %" stroke={chaosPrimary} fill={`${chaosPrimary}33`} />
+              <Area type="monotone" dataKey="errorRate" name="Error %" stroke="#f97316" fill="#f9731633" />
+            </AreaChart>
+          </ResponsiveContainer>
+        </ChartCard>
+      </div>
+      <ChaosRunsTable reports={reports} />
+    </div>
+  );
+}
+
+function ChaosCard({ report }: { report: ChaosReport }) {
+  const { summary, chaos_config } = report;
+  return (
+    <div className="rounded-2xl border border-border/60 bg-gradient-to-br from-background to-muted/30 p-5 shadow-sm">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Scenario</p>
+          <h3 className="text-xl font-bold">{humanizeScenario(summary.scenario)}</h3>
+        </div>
+        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+          {(summary.success_rate * 100).toFixed(1)}% success
+        </span>
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+        <div>
+          <p className="text-muted-foreground">Avg Latency</p>
+          <p className="text-lg font-semibold">{summary.avg_latency_ms.toLocaleString()} ms</p>
+        </div>
+        <div>
+          <p className="text-muted-foreground">p95 Latency</p>
+          <p className="text-lg font-semibold">{summary.p95_latency_ms.toLocaleString()} ms</p>
+        </div>
+        <div>
+          <p className="text-muted-foreground">Errors</p>
+          <p className="text-lg font-semibold">{summary.error_count}</p>
+        </div>
+        <div>
+          <p className="text-muted-foreground">Concurrency</p>
+          <p className="text-lg font-semibold">{summary.concurrency}</p>
+        </div>
+      </div>
+      <div className="mt-4 rounded-lg border border-border/60 bg-background/70 p-3 text-xs text-muted-foreground">
+        <p className="font-semibold text-foreground">Chaos Config</p>
+        <div className="mt-1 grid grid-cols-2 gap-1">
+          <span>Jitter: {chaos_config.jitter_min_ms}–{chaos_config.jitter_max_ms} ms</span>
+          <span>Network fail: {(chaos_config.network_fail_prob * 100).toFixed(0)}%</span>
+          <span>Tool fail: {(chaos_config.tool_fail_prob * 100).toFixed(0)}%</span>
+          <span>LLM bad output: {(chaos_config.llm_bad_output_prob * 100).toFixed(0)}%</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChaosRunsTable({ reports }: { reports: ChaosReport[] }) {
+  const rows = reports.flatMap((report) =>
+    (report.runs || []).map((run, index) => ({
+      scenario: humanizeScenario(report.summary.scenario),
+      run_id: run.run_id,
+      success: run.success,
+      latency: run.latency_ms,
+      errors: run.errors?.length ?? 0,
+      key: `${report.summary.scenario}-${run.run_id}-${index}`,
+    })),
+  );
+
+  if (!rows.length) {
+    return null;
+  }
+
+  return (
+    <div className="rounded-xl border border-border/60 bg-background shadow-sm">
+      <div className="border-b border-border/50 px-6 py-4">
+        <h2 className="text-lg font-semibold">Recent Chaos Runs</h2>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-border/60 text-sm">
+          <thead className="bg-muted/40 text-left text-muted-foreground">
+            <tr>
+              <th className="px-6 py-3 font-medium">Scenario</th>
+              <th className="px-6 py-3 font-medium">Run ID</th>
+              <th className="px-6 py-3 font-medium">Latency (ms)</th>
+              <th className="px-6 py-3 font-medium">Status</th>
+              <th className="px-6 py-3 font-medium">Errors</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border/60">
+            {rows.map((row) => (
+              <tr key={row.key}>
+                <td className="px-6 py-3 font-medium">{row.scenario}</td>
+                <td className="px-6 py-3 text-muted-foreground">{row.run_id}</td>
+                <td className="px-6 py-3">{row.latency?.toLocaleString() ?? "—"}</td>
+                <td className="px-6 py-3">
+                  <span className={`rounded-full px-2 py-1 text-xs font-semibold ${row.success ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"}`}>
+                    {row.success ? "Success" : "Failed"}
+                  </span>
+                </td>
+                <td className="px-6 py-3">{row.errors}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+function humanizeScenario(name: string) {
+  return name
+    .replace(/_/g, " ")
+    .split(" ")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
 }
 

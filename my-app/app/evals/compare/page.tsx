@@ -1,7 +1,9 @@
+import { listChaosReports } from "@/lib/chaosData";
 import { listEvalReports, loadEvalReport } from "@/lib/evalData";
+import { ChaosReport } from "@/lib/chaosTypes";
 import { EvalReport } from "@/lib/evalTypes";
 
-import EvalCompareDashboard from "@/components/ui/eval-dashboard";
+import EvalDashboard from "@/components/ui/eval-dashboard";
 
 type Props = {
   searchParams: Promise<{
@@ -43,6 +45,7 @@ export default async function EvalComparePage({ searchParams }: Props) {
     left ? loadEvalReport(left) : (null as EvalReport | null),
     right ? loadEvalReport(right) : (null as EvalReport | null),
   ]);
+  const chaosReports = await listChaosReports();
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
@@ -50,12 +53,13 @@ export default async function EvalComparePage({ searchParams }: Props) {
       <p className="mt-2 text-muted-foreground">
         Compare two evaluation runs side-by-side. Metrics are derived from the JSON reports generated under <code>data/evals</code>.
       </p>
-      <EvalCompareDashboard
+      <EvalDashboard
         evals={evals}
         initialLeftId={left}
         initialRightId={right}
         initialLeftReport={leftReport}
         initialRightReport={rightReport}
+        chaosReports={chaosReports as ChaosReport[]}
       />
     </div>
   );

@@ -47,6 +47,9 @@ emissions*.csv
 *.swo
 *~
 
+# Editor tooling
+.cursor/
+
 CLAUDE.md
 
 # OS

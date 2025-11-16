@@ -12,7 +12,7 @@ from .config import load_config
 from .longevity_agents import build_agent_profiles, load_user_profile, load_company_resource, ADVOCATE_NAME, PLANNER_NAME, seed_message_for_advocate
 from .memory import SharedMemory
 from .save_conversation import append_text, save_json
-from .tools_langchain import ValidateClaimsTool, ScheduleTool
+from .tools_langchain import ValidateClaimsTool, ScheduleTool, set_tool_caller
 from .plan_schema import FinalPlan
 from .utils import ensure_provider_ready
 from core.react_agent import create_react_agent
@@ -70,7 +70,8 @@ def run_dual_agents(
     memory.add_fact("user_name", user.get("name", "User"))
     memory.add_fact("goals", user.get("goals", []))
 
-    tools = [ValidateClaimsTool(default_url=cfg.valyu_url), ScheduleTool()]
+    telemetry: List[dict] = []
+    tools = [ValidateClaimsTool(default_url=cfg.valyu_url, telemetry=telemetry), ScheduleTool(telemetry=telemetry)]
 
     # Create two distinct agents with their own system prompts
     leo_agent = create_react_agent(
@@ -103,11 +104,14 @@ def run_dual_agents(
         messages.append(HumanMessage(content=hint[1]))
 
         t0 = time.perf_counter()
+        # Tag the tool caller so telemetry knows which agent triggered the tool call
+        set_tool_caller(speaker)
         if speaker == ADVOCATE_NAME:
             result = leo_agent.invoke({"messages": messages})
         else:
             result = luna_agent.invoke({"messages": messages})
         dt = time.perf_counter() - t0
+        set_tool_caller(None)
 
         last = result["messages"][-1]
         content = getattr(last, "content", "")
@@ -143,4 +147,3 @@ def run_dual_agents(
         "telemetry": str(telemetry_path),
         "final_plan": str(final_plan_path) if final_plan_obj else None,
     }
-

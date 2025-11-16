@@ -1,8 +1,16 @@
 from __future__ import annotations
 
 from typing import List, Optional, Type
+import time
 from pydantic import BaseModel, Field
 from langchain_core.tools import BaseTool
+
+# Simple global for tagging which agent invoked the tool (set by caller)
+TOOL_CALLER: Optional[str] = None
+
+def set_tool_caller(name: Optional[str]):
+    global TOOL_CALLER
+    TOOL_CALLER = name
 
 from .valyu_validation import validate_claims
 from .scheduling.clinic_scheduler import generate_slots, find_available_slots, book_slot
@@ -23,6 +31,7 @@ class ValidateClaimsTool(BaseTool):
     args_schema: Type[BaseModel] = ValidateClaimsInput
     default_url: Optional[str] = None
     timeout_s: int = 12
+    telemetry: Optional[List[dict]] = None
 
     def _run(self, claims: List[str], context: Optional[str] = None, url: Optional[str] = None) -> List[dict]:
         from .schemas import dataclass  # not used, but keep local style consistency
@@ -35,7 +44,9 @@ class ValidateClaimsTool(BaseTool):
                 self.context_before = context or None
                 self.context_after = None
         cl = [_C(c) for c in claims]
+        t0 = time.perf_counter()
         results = validate_claims(cl, url=url or self.default_url or "http://localhost:3000/validate", timeout_s=self.timeout_s, batch=True)
+        dt = time.perf_counter() - t0
         out = []
         for r in results:
             out.append({
@@ -44,6 +55,14 @@ class ValidateClaimsTool(BaseTool):
                 "confidence": r.confidence,
                 "evidence": r.evidence,
                 "server_unavailable": r.server_unavailable,
+            })
+        if self.telemetry is not None:
+            self.telemetry.append({
+                "type": "tool",
+                "name": "validate_claims",
+                "caller": TOOL_CALLER,
+                "count": len(out),
+                "latency_s": dt,
             })
         return out
 
@@ -60,8 +79,10 @@ class ScheduleTool(BaseTool):
         "Returns list of appointments with timestamps, staff role, and price."
     )
     args_schema: Type[BaseModel] = ScheduleInput
+    telemetry: Optional[List[dict]] = None
 
     def _run(self, services: List[str], user_id: str) -> List[dict]:
+        t0 = time.perf_counter()
         slots = generate_slots(seed=42)
         booked = []
         for svc in services:
@@ -71,5 +92,14 @@ class ScheduleTool(BaseTool):
             appt = book_slot(slots, svc, user_id=user_id)
             if appt:
                 booked.append(appt.__dict__)
+        dt = time.perf_counter() - t0
+        if self.telemetry is not None:
+            self.telemetry.append({
+                "type": "tool",
+                "name": "schedule_services",
+                "caller": TOOL_CALLER,
+                "requested": services,
+                "booked": len(booked),
+                "latency_s": dt,
+            })
         return booked
-

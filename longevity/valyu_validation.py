@@ -6,6 +6,13 @@ from typing import Iterable, List
 
 import requests
 
+from .chaos_layer import (
+    apply_network_chaos,
+    apply_tool_chaos,
+    ChaosNetworkError,
+    ChaosToolError,
+)
+
 from .schemas import Claim, ClaimValidation
 
 
@@ -122,7 +129,11 @@ def _post_with_retries(url: str, json_payload: dict, timeout_s: int, max_retries
     last_exc = None
     for attempt in range(max_retries + 1):
         try:
+            apply_network_chaos()
+            apply_tool_chaos()
             return requests.post(url, json=json_payload, timeout=timeout_s)
+        except (ChaosNetworkError, ChaosToolError) as e:
+            last_exc = e
         except Exception as e:
             last_exc = e
             time.sleep(0.5 * (attempt + 1))

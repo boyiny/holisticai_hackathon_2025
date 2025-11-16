@@ -19,6 +19,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+data/longevity_plan_*
 
 # Virtual environments
 venv/

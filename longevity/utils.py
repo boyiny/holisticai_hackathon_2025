@@ -6,6 +6,7 @@ from typing import List, Tuple, Dict, Any, Optional
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
 from core.react_agent.utils import load_chat_model
+from .chaos_layer import apply_network_chaos, maybe_corrupt_llm_output
 
 
 def call_llm(
@@ -29,10 +30,12 @@ def call_llm(
             msgs.append(AIMessage(content=text))
 
     t0 = time.perf_counter()
+    apply_network_chaos()
     out = llm.invoke(msgs)
     dt = time.perf_counter() - t0
 
-    content = out.content if isinstance(out, AIMessage) else getattr(out, "content", str(out))
+    raw_content = out.content if isinstance(out, AIMessage) else getattr(out, "content", str(out))
+    content = maybe_corrupt_llm_output(raw_content)
     telemetry = {
         "latency_s": dt,
         "provider": model_name,

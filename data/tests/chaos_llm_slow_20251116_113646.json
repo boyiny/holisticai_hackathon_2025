@@ -1,0 +1,72 @@
+{
+  "scenario": "llm_slow",
+  "chaos_config": {
+    "enabled": true,
+    "jitter_min_ms": 2000,
+    "jitter_max_ms": 8000,
+    "network_fail_prob": 0.1,
+    "tool_fail_prob": 0.0,
+    "llm_bad_output_prob": 0.0
+  },
+  "summary": {
+    "scenario": "llm_slow",
+    "num_runs": 4,
+    "concurrency": 2,
+    "elapsed_s": 66.259,
+    "success_rate": 0.0,
+    "p50_latency_ms": 27804,
+    "p95_latency_ms": 38453,
+    "avg_latency_ms": 28026,
+    "error_count": 2,
+    "errors_sample": [
+      "ChaosNetworkError('Simulated network failure from chaos layer')",
+      "ChaosNetworkError('Simulated network failure from chaos layer')"
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "longevity_plan_20251116_113540",
+      "scenario": "llm_slow",
+      "success": false,
+      "latency_ms": 26956,
+      "outputs_dir": "data/longevity_plan_20251116_113540",
+      "telemetry": "data/longevity_plan_20251116_113540/telemetry.json",
+      "final_plan": null,
+      "errors": []
+    },
+    {
+      "run_id": "longevity_plan_20251116_113540",
+      "scenario": "llm_slow",
+      "success": false,
+      "latency_ms": 38453,
+      "outputs_dir": "data/longevity_plan_20251116_113540",
+      "telemetry": "data/longevity_plan_20251116_113540/telemetry.json",
+      "final_plan": null,
+      "errors": []
+    },
+    {
+      "run_id": "error_2",
+      "scenario": "llm_slow",
+      "success": false,
+      "latency_ms": 18893,
+      "outputs_dir": null,
+      "telemetry": null,
+      "final_plan": null,
+      "errors": [
+        "ChaosNetworkError('Simulated network failure from chaos layer')"
+      ]
+    },
+    {
+      "run_id": "error_3",
+      "scenario": "llm_slow",
+      "success": false,
+      "latency_ms": 27804,
+      "outputs_dir": null,
+      "telemetry": null,
+      "final_plan": null,
+      "errors": [
+        "ChaosNetworkError('Simulated network failure from chaos layer')"
+      ]
+    }
+  ]
+}

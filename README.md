@@ -286,7 +286,7 @@ For complete submission guidelines, see [HACKATHON_RULES.md](./docs/HACKATHON_RU
 
 ## Performance optimization
 Slow run ~300s: https://smith.langchain.com/public/5a6c1c09-7812-4721-931b-6c57579fdce8/r
-fast run 80s:
+fast run 80s: https://smith.langchain.com/public/309b38a0-704c-44a1-90b4-d4a0f206c148/r
 
 
 <div align="center">

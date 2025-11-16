@@ -6,6 +6,7 @@ from typing import Dict, List, Optional
 from .valyu_validation import validate_claims
 from .scheduling.clinic_scheduler import generate_slots, find_available_slots, book_slot
 from .memory import SharedMemory
+from .chaos_layer import apply_tool_chaos, ChaosToolError
 
 
 def tool_valyu_validate(memory: SharedMemory, claims, url: str, timeout_s: int, telemetry: List[dict]) -> List[dict]:
@@ -32,6 +33,10 @@ def tool_schedule_services(memory: SharedMemory, services: List[str], user_id: s
     slots = generate_slots(seed=42)
     booked = []
     for svc in services:
+        try:
+            apply_tool_chaos()
+        except ChaosToolError:
+            continue
         avail = find_available_slots(slots, svc)
         if not avail:
             continue

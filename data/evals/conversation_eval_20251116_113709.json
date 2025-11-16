@@ -1,0 +1,51 @@
+{
+  "pairs": [
+    {
+      "scenario_id": "user-info",
+      "reference_run_id": "019a8c68-21f9-77a4-9ca2-7df41ec09238",
+      "comparison_run_id": "019a8c69-4cf3-76e5-a705-d04ebe7eaa5e",
+      "reference_outputs_dir": "/Users/paverma/PersonalProjects/new_holistic_hackathon_2025/holisticai_hackathon_2025/data/longevity_plan_20251116_112346",
+      "comparison_outputs_dir": "/Users/paverma/PersonalProjects/new_holistic_hackathon_2025/holisticai_hackathon_2025/data/longevity_plan_20251116_112502",
+      "collaboration_similarity": 8.0,
+      "alignment_a": 9.0,
+      "alignment_b": 8.0,
+      "reasoning_depth": 7.0,
+      "consistency_score": 9.0,
+      "recommendation": "conversation_a",
+      "notes": "Both conversations provide solid plans, but Conversation A offers a more comprehensive approach to Alice's goals and constraints, while Conversation B lacks some depth in the final recommendations.",
+      "judge_model": "gpt-4o-mini",
+      "summary_model": null,
+      "created_at": "2025-11-16T11:37:05.823548"
+    },
+    {
+      "scenario_id": "user-info",
+      "reference_run_id": "019a8c68-21f9-77a4-9ca2-7df41ec09238",
+      "comparison_run_id": "019a8c69-9ff4-7062-96c1-55400fc20fdb",
+      "reference_outputs_dir": "/Users/paverma/PersonalProjects/new_holistic_hackathon_2025/holisticai_hackathon_2025/data/longevity_plan_20251116_112346",
+      "comparison_outputs_dir": "/Users/paverma/PersonalProjects/new_holistic_hackathon_2025/holisticai_hackathon_2025/data/longevity_plan_20251116_112523",
+      "collaboration_similarity": 8.0,
+      "alignment_a": 7.0,
+      "alignment_b": 9.0,
+      "reasoning_depth": 8.0,
+      "consistency_score": 9.0,
+      "recommendation": "conversation_b",
+      "notes": "Conversation B provides a more structured and detailed plan that aligns closely with Alice's goals and constraints, while also incorporating a phased approach to her improvement. It demonstrates better collaboration between the advocate and planner, ensuring all recommendations are coherent and actionable.",
+      "judge_model": "gpt-4o-mini",
+      "summary_model": null,
+      "created_at": "2025-11-16T11:37:09.121427"
+    }
+  ],
+  "summary": {
+    "avg_collaboration": 8.0,
+    "avg_alignment_a": 8.0,
+    "avg_alignment_b": 8.5,
+    "avg_reasoning_depth": 7.5,
+    "avg_consistency": 9.0,
+    "num_pairs": 2,
+    "project": "new-hackathon-2025",
+    "judge_model": "gpt-4o-mini",
+    "summary_model": null
+  },
+  "group_count": 1,
+  "min_group_size": 2
+}

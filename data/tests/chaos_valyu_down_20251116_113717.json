@@ -1,0 +1,78 @@
+{
+  "scenario": "valyu_down",
+  "chaos_config": {
+    "enabled": true,
+    "jitter_min_ms": 500,
+    "jitter_max_ms": 1500,
+    "network_fail_prob": 0.3,
+    "tool_fail_prob": 0.3,
+    "llm_bad_output_prob": 0.0
+  },
+  "summary": {
+    "scenario": "valyu_down",
+    "num_runs": 4,
+    "concurrency": 2,
+    "elapsed_s": 20.449,
+    "success_rate": 0.0,
+    "p50_latency_ms": 9771,
+    "p95_latency_ms": 10676,
+    "avg_latency_ms": 7840,
+    "error_count": 4,
+    "errors_sample": [
+      "ChaosNetworkError('Simulated network failure from chaos layer')",
+      "ChaosNetworkError('Simulated network failure from chaos layer')",
+      "ChaosNetworkError('Simulated network failure from chaos layer')",
+      "ChaosNetworkError('Simulated network failure from chaos layer')"
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "error_1",
+      "scenario": "valyu_down",
+      "success": false,
+      "latency_ms": 1242,
+      "outputs_dir": null,
+      "telemetry": null,
+      "final_plan": null,
+      "errors": [
+        "ChaosNetworkError('Simulated network failure from chaos layer')"
+      ]
+    },
+    {
+      "run_id": "error_0",
+      "scenario": "valyu_down",
+      "success": false,
+      "latency_ms": 10676,
+      "outputs_dir": null,
+      "telemetry": null,
+      "final_plan": null,
+      "errors": [
+        "ChaosNetworkError('Simulated network failure from chaos layer')"
+      ]
+    },
+    {
+      "run_id": "error_2",
+      "scenario": "valyu_down",
+      "success": false,
+      "latency_ms": 9671,
+      "outputs_dir": null,
+      "telemetry": null,
+      "final_plan": null,
+      "errors": [
+        "ChaosNetworkError('Simulated network failure from chaos layer')"
+      ]
+    },
+    {
+      "run_id": "error_3",
+      "scenario": "valyu_down",
+      "success": false,
+      "latency_ms": 9771,
+      "outputs_dir": null,
+      "telemetry": null,
+      "final_plan": null,
+      "errors": [
+        "ChaosNetworkError('Simulated network failure from chaos layer')"
+      ]
+    }
+  ]
+}

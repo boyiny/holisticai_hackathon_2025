@@ -1,0 +1,15 @@
+[
+  {
+    "claim": {
+      "text": "Activities like brisk walking, cycling, or swimming are great options.",
+      "turn_index": 0,
+      "speaker": "Health Advocate",
+      "context_before": "**Physical Activity**: \n   - Aim for at least 150 minutes of moderate aerobic exercise per week to help improve VO2 max.",
+      "context_after": "4."
+    },
+    "validity": "unknown",
+    "confidence": 0.0,
+    "evidence": null,
+    "server_unavailable": true
+  }
+]

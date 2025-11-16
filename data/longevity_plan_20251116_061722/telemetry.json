@@ -1,0 +1,262 @@
+[
+  {
+    "step": 1,
+    "speaker": "Service Planner",
+    "latency_s": 8.502547499985667,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 4,
+    "latency_s": 0.00217145899659954
+  },
+  {
+    "step": 4,
+    "speaker": "Health Advocate",
+    "latency_s": 5.8322957920026965,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 6,
+    "speaker": "Service Planner",
+    "latency_s": 6.5006068750226405,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 4,
+    "latency_s": 0.0017499579989816993
+  },
+  {
+    "step": 9,
+    "speaker": "Health Advocate",
+    "latency_s": 5.530683834018419,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 11,
+    "speaker": "Service Planner",
+    "latency_s": 5.918433500017272,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.0022454169811680913
+  },
+  {
+    "step": 14,
+    "speaker": "Health Advocate",
+    "latency_s": 5.18884699998307,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 16,
+    "speaker": "Service Planner",
+    "latency_s": 5.378275333991041,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.0013209590106271207
+  },
+  {
+    "step": 19,
+    "speaker": "Health Advocate",
+    "latency_s": 6.609637249988737,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 21,
+    "speaker": "Service Planner",
+    "latency_s": 5.26069920900045,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.012274000007892027
+  },
+  {
+    "step": 24,
+    "speaker": "Health Advocate",
+    "latency_s": 5.827673457999481,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 26,
+    "speaker": "Service Planner",
+    "latency_s": 4.990333665977232,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.002294708014233038
+  },
+  {
+    "step": 29,
+    "speaker": "Health Advocate",
+    "latency_s": 7.565994208009215,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 31,
+    "speaker": "Service Planner",
+    "latency_s": 5.590974541002652,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.0029007080011069775
+  },
+  {
+    "step": 34,
+    "speaker": "Health Advocate",
+    "latency_s": 5.5694593749940395,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 36,
+    "speaker": "Service Planner",
+    "latency_s": 5.860086542001227,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.008747249987209216
+  },
+  {
+    "step": 39,
+    "speaker": "Health Advocate",
+    "latency_s": 6.114227999991272,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 41,
+    "speaker": "Service Planner",
+    "latency_s": 6.984287541999947,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.00234791700495407
+  },
+  {
+    "step": 44,
+    "speaker": "Health Advocate",
+    "latency_s": 5.882350959000178,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "step": 46,
+    "speaker": "Service Planner",
+    "latency_s": 5.8406271249987185,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  },
+  {
+    "type": "tool",
+    "name": "scheduler",
+    "booked": 3,
+    "latency_s": 0.002260500012198463
+  },
+  {
+    "step": 49,
+    "speaker": "Health Advocate",
+    "latency_s": 6.661571666016243,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "type": "memory_update",
+    "claims_added": 0
+  }
+]

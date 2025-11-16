@@ -1,0 +1,38 @@
+[
+  {
+    "id": "longevity_plan_20251116_062126",
+    "run_id": "run_1763274086200_e8850c",
+    "timestamp": "2025-11-16 06:24:04",
+    "user": "Alice Nguyen",
+    "status": "success",
+    "plan_score": 0.0,
+    "outputs_dir": "data/longevity_plan_20251116_062126"
+  },
+  {
+    "id": "longevity_plan_20251116_062022",
+    "run_id": "run_1763274022900_9f5a69",
+    "timestamp": "2025-11-16 06:20:45",
+    "user": "Alice Nguyen",
+    "status": "success",
+    "plan_score": 0.0,
+    "outputs_dir": "data/longevity_plan_20251116_062022"
+  },
+  {
+    "id": "longevity_plan_20251116_061819",
+    "run_id": "run_1763273899252_9a1191",
+    "timestamp": "2025-11-16 06:20:34",
+    "user": "Alice Nguyen",
+    "status": "success",
+    "plan_score": 0.0,
+    "outputs_dir": "data/longevity_plan_20251116_061819"
+  },
+  {
+    "id": "longevity_plan_20251116_061722",
+    "run_id": "run_1763273842036_7902cb",
+    "timestamp": "2025-11-16 06:19:23",
+    "user": "Alice Nguyen",
+    "status": "success",
+    "plan_score": 0.0,
+    "outputs_dir": "data/longevity_plan_20251116_061722"
+  }
+]

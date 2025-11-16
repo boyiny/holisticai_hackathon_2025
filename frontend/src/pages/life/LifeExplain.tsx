@@ -35,7 +35,7 @@ export default function LifeExplain() {
       </div>
       <div className="flex items-center justify-between">
         <button className="btn-ghost border border-slate-200 dark:border-white/10" onClick={() => nav('/life/persona')}>Back</button>
-        <button className="btn" onClick={() => nav('/overview')}>Start conversation</button>
+        <button className="btn" onClick={() => nav('/life/simulate')}>Start conversation</button>
       </div>
     </div>
   )

@@ -1,0 +1,51 @@
+LONGEVITY PLAN SUMMARY for Alice Nguyen
+Total Cost (est.): $6500.00
+
+Appointments:
+- M1: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M2: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M3: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M4: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M5: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+- M6: baseline_bloodwork @ 2025-11-03T09:00:00Z (lab tech, Main Clinic) $120.00 [evidence: unknown]
+- M6: vo2_test @ 2025-11-10T09:00:00Z (coach, Main Clinic) $150.00 [evidence: unknown]
+- M6: scan @ 2025-11-17T09:00:00Z (nurse, Main Clinic) $300.00 [evidence: unknown]
+- M6: lifestyle_coaching @ 2025-12-03T09:00:00Z (coach, Main Clinic) $80.00 [evidence: unknown]
+
+Warnings:
+- Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, scan, vo2_test. Consider clinician review.
+
+Disclaimers:
+- This plan is educational and not medical advice.
+- Discuss all interventions with a licensed clinician.

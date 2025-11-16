@@ -1,0 +1,15 @@
+[
+  {
+    "claim": {
+      "text": "- **Physical Activity**: Encourage Alice to incorporate regular aerobic exercise (like brisk walking, cycling, or swimming) to help improve her VO2 max.",
+      "turn_index": 0,
+      "speaker": "Health Advocate",
+      "context_before": "This will help identify patterns and areas for improvement.",
+      "context_after": "- **Nutrition**: Focus on a heart-healthy diet rich in fruits, vegetables, whole grains, and healthy fats to help reduce LDL levels."
+    },
+    "validity": "unknown",
+    "confidence": 0.0,
+    "evidence": null,
+    "server_unavailable": true
+  }
+]

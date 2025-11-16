@@ -1,0 +1,4568 @@
+{
+  "summary": {
+    "mode": "optimized",
+    "num_runs": 10,
+    "concurrency": 10,
+    "elapsed_s": 158.439,
+    "success_rate": 0.9,
+    "p50_latency_ms": 64986,
+    "p95_latency_ms": 158378,
+    "avg_tokens_per_run": 4090.9,
+    "tokens_stddev": 1788.81,
+    "plan_consistency": 0.6,
+    "errors_sample": [
+      "AttributeError(\"'dict' object has no attribute 'claim'\")"
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "run_1763274086205_1b0cfa",
+      "scenario_id": "ui_triggered-9",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 3500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 4,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 3395,
+      "latency_ms": 56608,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086202_e04330",
+      "scenario_id": "ui_triggered-6",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 3500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 4,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 3759,
+      "latency_ms": 62216,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086202_704c32",
+      "scenario_id": "ui_triggered-8",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 3500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 4,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 4058,
+      "latency_ms": 62472,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "error_0",
+      "scenario_id": "ui_triggered",
+      "success": false,
+      "num_turns": 0,
+      "plan_struct": {},
+      "tokens_total": 0,
+      "latency_ms": 0,
+      "errors": [
+        "AttributeError(\"'dict' object has no attribute 'claim'\")"
+      ],
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086204_26ca30",
+      "scenario_id": "ui_triggered-5",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 3500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 4,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 3812,
+      "latency_ms": 64986,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086203_f53f03",
+      "scenario_id": "ui_triggered-4",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 3500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 4,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 4138,
+      "latency_ms": 74825,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086200_1a85d4",
+      "scenario_id": "ui_triggered-2",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 5420.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 4,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, scan, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 3906,
+      "latency_ms": 75783,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086202_b5c3ce",
+      "scenario_id": "ui_triggered-7",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 3500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 4,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 5,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 4319,
+      "latency_ms": 77601,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086199_d95c33",
+      "scenario_id": "ui_triggered-3",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 5600.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 4,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 5,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, scan, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 6413,
+      "latency_ms": 135117,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763274086200_e8850c",
+      "scenario_id": "ui_triggered-1",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 6500.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 4,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 5,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          },
+          {
+            "month": 6,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 6,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 6,
+            "service": "scan",
+            "rationale": "Supports user goals via scan.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "scan",
+              "start_iso": "2025-11-17T09:00:00Z",
+              "end_iso": "2025-11-17T10:00:00Z",
+              "staff_role": "nurse",
+              "location": "Main Clinic",
+              "price": 300.0,
+              "booking_id": "7dfdfe60e0"
+            }
+          },
+          {
+            "month": 6,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, scan, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 7109,
+      "latency_ms": 158378,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_062126",
+      "mode": "optimized"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ if tutorials_path.exists():
 
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
-from langsmith import Client
+from langsmith import Client, uuid7
 import tiktoken
 
 # Set up environment (will load .env, check keys, configure LangSmith)
@@ -46,8 +46,8 @@ if not os.getenv('LANGSMITH_API_KEY'):
     print("  Tracing will not work without it.")
     print("  Get a free key at: https://smith.langchain.com")
 
-# Generate a unique run ID for tracking
-run_id = str(uuid.uuid4())
+# Generate a unique run ID for tracking (UUID v7 as recommended by LangSmith)
+run_id = uuid7()
 
 print(f"Run ID: {run_id}")
 print("\nRunning agent...\n")
@@ -56,7 +56,7 @@ print("\nRunning agent...\n")
 input_message = "Explain Artificial Intelligence in one sentence."
 input_tokens = count_tokens(input_message)
 
-# Run the agent with metadata
+# Run the agent with metadata (pass UUID object directly; LangSmith expects this)
 start_time = time.time()
 result = agent_traced.invoke(
     {"messages": [("user", input_message)]},

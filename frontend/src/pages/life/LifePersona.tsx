@@ -3,10 +3,17 @@ import { useLife, Persona, FocusArea } from '../../context/LifeContext'
 import { useState } from 'react'
 
 const personas: Persona[] = [
-  { name: 'Jordan Dubois', age: 35, summary: 'Busy product manager. Wants more energy and better metabolic health.' },
-  { name: 'Alex Sharma', age: 63, summary: 'Active grandparent. Wants healthy aging and mobility.' },
-  { name: 'Sacha Silva', age: 24, summary: 'Overworked, high-stress junior employee. Wants better sleep and recovery.' },
+  { name: 'Jordan Dubois', age: 35, summary: 'Ambitious product leader prioritizing energy, metabolic balance, and long-term vitality' },
+  { name: 'Alex Sharma', age: 63, summary: 'Older adult committed to staying active, mobile, and resilient.' },
+  { name: 'Sacha Silva', age: 24, summary: 'High-stress young professional seeking better rest, energy, and recovery.' },
 ]
+
+// Default images that persist from the public folder
+const defaultPersonaImages: Record<string, string> = {
+  'Jordan Dubois': '/personas/Jordan.jpg',
+  'Alex Sharma': '/personas/Alex.jpg',
+  'Sacha Silva': '/personas/Sacha.jpg',
+}
 
 const focusAreas: FocusArea[] = [
   { title: 'Metabolic Health', description: 'Weight, energy, blood sugar stability, sustainable nutrition.' },
@@ -34,13 +41,20 @@ export default function LifePersona() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {personas.map(p => {
             const active = persona?.name === p.name
-            const img = images[p.name]
+            // Use uploaded image if available, otherwise fall back to default image
+            const img = images[p.name] || defaultPersonaImages[p.name]
             const inputId = `upload-${p.name.replace(/\s+/g,'-')}`
             return (
               <div key={p.name} className={`card p-4 transition border-2 ${active ? 'border-accent' : 'border-transparent'}`}>
-                <div className="aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 mb-3 flex items-center justify-center">
+                <div className="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 mb-3 flex items-center justify-center">
                   {img ? (
-                    <img src={img} alt={p.name} className="w-full h-full object-cover" />
+                    <img 
+                      src={img} 
+                      alt={p.name} 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   ) : (
                     <span className="text-xs text-slate-500">Upload photo</span>
                   )}

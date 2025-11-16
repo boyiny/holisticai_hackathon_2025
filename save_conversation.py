@@ -6,8 +6,10 @@ and saves the complete conversation after it completes.
 
 from datetime import datetime
 import os
+from langsmith import traceable
 
 
+@traceable
 def save_conversation_to_file(conversation_messages, output_dir="data"):
     """
     Save conversation messages to a timestamped text file.
@@ -58,6 +60,7 @@ def save_conversation_to_file(conversation_messages, output_dir="data"):
     return filepath
 
 
+@traceable
 def save_conversation_from_thread(client, thread_id, output_dir="data"):
     """
     Save conversation from an OpenAI thread to a timestamped text file.

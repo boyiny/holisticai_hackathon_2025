@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 from datetime import datetime
 import json
 import requests
+from langsmith import traceable
 
+from scripts import setup_environment
 from longevity_agents import LongevityAgents
 
 # Configuration
@@ -22,6 +24,8 @@ class LongevityConversationSystem:
 
     def __init__(self):
         # Load environment variables
+        # Ensure LangSmith and related env vars are configured
+        setup_environment()
         dotenv_path = join(dirname(__file__), '.env')
         load_dotenv(dotenv_path)
 
@@ -74,6 +78,7 @@ class LongevityConversationSystem:
             company_resources = f.read()
         return company_resources
 
+    @traceable
     def check_scientific_validity_with_valyu(self, claim, context):
         """
         Check scientific validity of a claim using Valyu MCP server.
@@ -159,6 +164,7 @@ class LongevityConversationSystem:
 
         return claims
 
+    @traceable
     def validate_conversation_claims(self, role, message):
         """
         Validate scientific claims made in the conversation using Valyu.
@@ -189,6 +195,7 @@ class LongevityConversationSystem:
                     print(f"   Confidence: {validation_result.get('confidence')}")
                     print(f"   Valid: {validation_result.get('valid')}\n")
 
+    @traceable
     def initialize_agents(self):
         """Initialize both customer and company agents"""
         print("Loading user data and company resources...")
@@ -203,6 +210,7 @@ class LongevityConversationSystem:
 
         print("Agents initialized successfully!\n")
 
+    @traceable
     def run_conversation(self):
         """
         Run multi-turn conversation between Customer Needs Agent and Company Rules Agent.
@@ -312,6 +320,7 @@ Could you recommend a comprehensive 6-month longevity program with specific serv
 
         print(f"\nConversation completed after {current_turn-1} turns.\n")
 
+    @traceable
     def generate_plan_summary(self):
         """Generate final longevity plan summary from the conversation"""
         print("Generating comprehensive longevity plan summary...\n")
@@ -360,6 +369,7 @@ Could you recommend a comprehensive 6-month longevity program with specific serv
             print(f"Error generating summary: {run.status}")
             return None
 
+    @traceable
     def upload_conversation_history(self):
         """Upload conversation history file to OpenAI for analysis"""
         file = self.client.files.create(
@@ -368,6 +378,7 @@ Could you recommend a comprehensive 6-month longevity program with specific serv
         )
         return file.id
 
+    @traceable
     def save_validity_checks(self):
         """Save all scientific validity checks to JSON file"""
         with open(self.validity_check_file, 'w') as f:
@@ -380,6 +391,7 @@ Could you recommend a comprehensive 6-month longevity program with specific serv
         print(f"\nScientific validity checks saved to: {self.validity_check_file}")
         print(f"Total claims validated: {len(self.validity_checks)}\n")
 
+    @traceable
     def run(self):
         """Main execution flow"""
         print("=" * 80)

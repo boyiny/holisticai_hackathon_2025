@@ -1,8 +1,5 @@
-from openai import OpenAI
-import os
-from os.path import join, dirname
-from dotenv import load_dotenv
 import json
+from langsmith import traceable
 
 # General instructions for agent responses
 general_instructions = """
@@ -124,6 +121,7 @@ class LongevityAgents:
         }
         return company_rules_agent
 
+    @traceable
     def create_customer_needs_agent(self, user_data):
         """Create OpenAI assistant for customer needs agent"""
         agent_config = self.declare_customer_needs_agent(user_data)

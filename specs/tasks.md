@@ -16,8 +16,18 @@
 3. Research on optimization and regulations : Joon
 4. use parallel test and llm judge to do eval: Prakash
    Spec plan file: specs/eval.md
-   - final plan consistency: `python scripts/eval_final_plan_consistency.py --project <langsmith_project> --max-runs 20 --dry-run`
-   - conversation consistency: `python scripts/eval_conversation_consistency.py --project <langsmith_project> --max-runs 20 --summary-model gpt-4o-mini --dry-run`
+   - final plan consistency: `python scripts/eval_final_plan_consistency.py --project <langsmith_project> --max-runs 20`
+       - example report: data/evals/conversation_eval_20251116_123711.json
+       - How to interpret the summary section in the report:
+          - avg_collaboration: Average of the judge’s 0‑10 “collaboration similarity” scores across all scenario comparisons. It reflects how closely the two conversations’ advocate↔planner dynamics resemble each other (structure, turn-taking, cooperative tone).
+          - avg_alignment_a / avg_alignment_b: Mean 0‑10 alignment scores for the reference run (“A”) and the comparison run (“B”) respectively. Each measures how well that conversation/plan combination stays true to the user’s goals and context.
+          - avg_reasoning_depth: Average score for how thorough and coherent the reasoning is (did agents justify choices, sequence steps sensibly, surface trade‑offs).
+          - avg_consistency: Mean 0‑10 rating for whether each conversation’s final plan actually follows from the dialogue (no hallucinated steps, conclusions tied to discussion).
+          - num_pairs: Number of scenario comparisons the eval actually ran (each pair is one reference run vs. one comparison run for the same user profile).
+          - project: The LangSmith project whose runs were evaluated (final_report_eval in your case).
+          - judge_model: The model used as the LLM judge (defaults to gpt-4o-mini, configurable via --judge-model).
+   - conversation consistency: `python scripts/eval_conversation_consistency.py --project <langsmith_project> --max-runs 20 --summary-model gpt-4o-mini`
+       - example report: data/evals/conversation_eval_20251116_124355.json
 
 ## Performance optimization
 Slow run ~300s, 29000 tokens: https://smith.langchain.com/public/5a6c1c09-7812-4721-931b-6c57579fdce8/r

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useLife } from '../../context/LifeContext'
 import { WorkflowTimeline, type WorkflowStepState, type StepId } from '../../components/WorkflowTimeline'
+import { useConversation } from '@elevenlabs/react'
 
 type SnapshotSection = {
   primaryGoals: string[]
@@ -23,6 +24,8 @@ export default function SimulationScreen() {
   const { persona, focus } = useLife()
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
   const [stageIndex, setStageIndex] = useState(0)
+  const [mode, setMode] = useState<'sim' | 'live' | 'duo' | 'duoText'>('sim')
+  const [agentIdInput, setAgentIdInput] = useState<string>(import.meta.env.VITE_ELEVEN_AGENT_ID || '')
   const startedAtRef = useRef<number>(Date.now())
 
   useEffect(() => {
@@ -220,23 +223,46 @@ export default function SimulationScreen() {
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         <div className="lg:col-span-2 card p-4 flex flex-col min-h-[60vh]">
-          <div className="mb-2">
-            <div className="font-display font-bold">Simulated Interview</div>
-            <div className="text-xs text-slate-500">audio by 11Labs (simulated)</div>
-            <div className="text-xs text-slate-500 mt-1">Persona: <span className="font-medium">{persona.name}</span> — Focus: <span className="font-medium">{focus.title}</span></div>
-          </div>
-          <div className="flex-1 overflow-auto space-y-2 pr-1">
-            {conversationSteps.slice(0, currentStepIndex + 1).flatMap(s => s.messages).map((m, idx) => (
-              <div key={idx} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm ${m.speaker === 'agent' ? 'bg-violet-600 text-white self-start rounded-bl-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white self-end rounded-br-sm ml-auto'}`}>
-                <div className="text-[11px] opacity-80 mb-0.5">{m.speaker === 'agent' ? 'Intake Agent' : persona.name}</div>
-                <div>{m.text}</div>
+          <div className="flex items-center justify-between mb-2">
+            <div>
+              <div className="font-display font-bold">{mode === 'live' ? 'Live Interview (ElevenLabs)' : mode === 'duo' ? 'Duo Agents: LEO ↔ LUNA' : 'Simulated Interview'}</div>
+              <div className="text-xs text-slate-500">
+                {mode === 'live' ? 'real-time voice via ElevenLabs' : mode === 'duo' ? 'two agents conversing via ElevenLabs' : 'audio by 11Labs (simulated)'}
               </div>
-            ))}
+              <div className="text-xs text-slate-500 mt-1">Persona: <span className="font-medium">{persona.name}</span> — Focus: <span className="font-medium">{focus.title}</span></div>
+            </div>
+            <div className="flex items-center gap-2 text-xs">
+              <select className="input text-xs" value={mode} onChange={(e) => setMode(e.target.value as any)}>
+                <option value="sim">Simulated</option>
+                <option value="live">Live (You ↔ Agent)</option>
+                <option value="duo">Duo (Agents SDK)</option>
+                <option value="duoText">Duo (Text + TTS)</option>
+              </select>
+            </div>
           </div>
-          <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between">
-            <div>Step {Math.min(currentStepIndex + 1, conversationSteps.length)} / {conversationSteps.length} — auto-playing…</div>
-            <button className="btn-ghost border border-slate-200 dark:border-white/10 text-xs" onClick={() => nav('/life/persona')}>Skip to other simulations</button>
-          </div>
+
+          {mode === 'live' ? (
+            <LiveElevenPanel agentIdInput={agentIdInput} setAgentIdInput={setAgentIdInput} personaName={persona.name} />
+          ) : mode === 'duo' ? (
+            <DuoElevenPanel personaName={persona.name} focusTitle={focus.title} />
+          ) : mode === 'duoText' ? (
+            <DuoTextTTSPanel personaName={persona.name} focusTitle={focus.title} />
+          ) : (
+            <>
+              <div className="flex-1 overflow-auto space-y-2 pr-1">
+                {conversationSteps.slice(0, currentStepIndex + 1).flatMap(s => s.messages).map((m, idx) => (
+                  <div key={idx} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm ${m.speaker === 'agent' ? 'bg-violet-600 text-white self-start rounded-bl-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white self-end rounded-br-sm ml-auto'}`}>
+                    <div className="text-[11px] opacity-80 mb-0.5">{m.speaker === 'agent' ? 'Intake Agent' : persona.name}</div>
+                    <div>{m.text}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between">
+                <div>Step {Math.min(currentStepIndex + 1, conversationSteps.length)} / {conversationSteps.length} — auto-playing…</div>
+                <button className="btn-ghost border border-slate-200 dark:border-white/10 text-xs" onClick={() => nav('/life/persona')}>Skip to other simulations</button>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="lg:col-span-3 card p-4">
@@ -312,6 +338,29 @@ export default function SimulationScreen() {
   )
 }
 
+function buildLocalDuoMock(turns: number, personaName: string, focusTitle: string) {
+  const L = Math.max(2, Math.min(12, turns))
+  const seed = [
+    { speaker: 'LEO' as const, text: `I’m LEO. I’ll gather ${personaName}’s goals and routines around ${focusTitle}.` },
+    { speaker: 'LUNA' as const, text: `I’m LUNA. I’ll check safety, evidence, and schedule realistic next steps.` },
+  ]
+  const pool = [
+    { speaker: 'LEO' as const, text: `Initial intake suggests limited weekday movement and late bedtime. I propose simple movement snacks and earlier wind-down.` },
+    { speaker: 'LUNA' as const, text: `Evidence supports small, frequent bouts of movement. Let’s keep intensity low initially and set two 20–25 min sessions per week.` },
+    { speaker: 'LEO' as const, text: `Nutrition timing seems late. We can try moving dinner earlier and set a caffeine cutoff.` },
+    { speaker: 'LUNA' as const, text: `That’s aligned with sleep hygiene research; let’s document a 1–2 hour earlier dinner target and a 2 pm caffeine cutoff.` },
+    { speaker: 'LEO' as const, text: `We’ll keep phrasing as lifestyle coaching, not medical advice, and suggest review with a clinician.` },
+    { speaker: 'LUNA' as const, text: `Agreed. I’ll include disclaimers and plan a quick weekly check-in to adapt the routine.` },
+  ]
+  const out = [...seed]
+  let i = 0
+  while (out.length < L) {
+    out.push(pool[i % pool.length])
+    i++
+  }
+  return out.slice(0, L)
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="space-y-2">
@@ -365,6 +414,417 @@ function FlowBar({ stages, activeIndex }: { stages: string[]; activeIndex: numbe
           {i < stages.length - 1 && (<div className={`w-10 h-[2px] ${i < activeIndex ? 'bg-violet-600' : 'bg-slate-200 dark:bg-white/10'}`} />)}
         </div>
       ))}
+    </div>
+  )
+}
+
+type LiveElevenPanelProps = {
+  agentIdInput: string
+  setAgentIdInput: (v: string) => void
+  personaName: string
+}
+
+function LiveElevenPanel({ agentIdInput, setAgentIdInput, personaName }: LiveElevenPanelProps) {
+  const [logs, setLogs] = useState<string[]>([])
+  const [messages, setMessages] = useState<{ speaker: 'agent' | 'user'; text: string }[]>([])
+  const [connecting, setConnecting] = useState(false)
+  const [micMuted, setMicMuted] = useState(false)
+  const [volume, setVolume] = useState(0.9)
+
+  const conversation = useConversation({
+    micMuted,
+    volume,
+    onStatusChange: (s) => setLogs((l) => [`status: ${s}`, ...l].slice(0, 50)),
+    onModeChange: (m) => setLogs((l) => [`mode: ${m}`, ...l].slice(0, 50)),
+    onError: (e) => setLogs((l) => [`error: ${String(e)}`,...l].slice(0, 50)),
+    onMessage: (m: any) => {
+      try {
+        // Try to extract a readable text and role
+        const role: 'agent' | 'user' | undefined = (m?.role === 'assistant' || m?.role === 'agent') ? 'agent' : (m?.role === 'user' ? 'user' : undefined)
+        const text: string | undefined = m?.text ?? m?.message ?? m?.content ?? (typeof m === 'string' ? m : undefined)
+        if (role && text && text.trim()) {
+          setMessages((prev) => [...prev, { speaker: role, text }])
+        }
+        setLogs((l) => [`msg: ${JSON.stringify(m).slice(0, 200)}`,...l].slice(0, 50))
+      } catch (err) {
+        setLogs((l) => [`msg-parse-error: ${String(err)}`,...l].slice(0, 50))
+      }
+    },
+  })
+
+  const { status, isSpeaking, sendUserMessage, sendUserActivity } = conversation
+
+  const start = async () => {
+    if (!agentIdInput) {
+      alert('Enter a public ElevenLabs Agent ID or set VITE_ELEVEN_AGENT_ID in your env.')
+      return
+    }
+    try {
+      setConnecting(true)
+      // Request mic access explicitly so the browser shows a clear prompt first
+      await navigator.mediaDevices.getUserMedia({ audio: true })
+      await conversation.startSession({
+        agentId: agentIdInput,
+        connectionType: 'webrtc',
+      })
+    } catch (e) {
+      console.error(e)
+      alert('Failed to start live voice session. Check Agent ID and permissions.')
+    } finally {
+      setConnecting(false)
+    }
+  }
+
+  const stop = async () => {
+    try { await conversation.endSession() } catch {}
+  }
+
+  const [input, setInput] = useState('')
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <div className="flex flex-wrap items-center gap-2 mb-2">
+        <input
+          className="input text-xs flex-1 min-w-[160px]"
+          placeholder="Public Agent ID (from ElevenLabs)"
+          value={agentIdInput}
+          onChange={(e) => setAgentIdInput(e.target.value)}
+        />
+        {status !== 'connected' ? (
+          <button className="btn" onClick={start} disabled={connecting}>{connecting ? 'Connecting…' : 'Start'}</button>
+        ) : (
+          <button className="btn-ghost border border-slate-200 dark:border-white/10" onClick={stop}>End</button>
+        )}
+        <label className="text-xs flex items-center gap-1 ml-auto">
+          <input type="checkbox" checked={micMuted} onChange={(e) => setMicMuted(e.target.checked)} /> Mic muted
+        </label>
+      </div>
+
+      <div className="text-[11px] text-slate-500 mb-2 flex items-center gap-3">
+        <StatusPill label={status === 'connected' ? 'Connected' : 'Disconnected'} tone={status === 'connected' ? 'good' : 'warn'} />
+        <StatusPill label={isSpeaking ? 'Agent: Speaking' : 'Agent: Listening'} tone={isSpeaking ? 'accent' : 'idle'} pulse={isSpeaking} />
+        <div className="ml-auto flex items-center gap-2">
+          <span>Vol</span>
+          <input type="range" min={0} max={1} step={0.05} value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} />
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-auto space-y-2 pr-1">
+        {messages.length === 0 && (
+          <div className="text-xs text-slate-500">Speak to the agent after connecting, or type below. Your voice will be transcribed and the agent will reply with voice. Turn-taking is visible above.</div>
+        )}
+        {messages.map((m, idx) => (
+          <div key={idx} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm ${m.speaker === 'agent' ? 'bg-violet-600 text-white self-start rounded-bl-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white self-end rounded-br-sm ml-auto'}`}>
+            <div className="text-[11px] opacity-80 mb-0.5">{m.speaker === 'agent' ? 'Intake Agent' : personaName}</div>
+            <div>{m.text}</div>
+          </div>
+        ))}
+      </div>
+
+      <form
+        className="mt-2 flex items-center gap-2"
+        onSubmit={(e) => {
+          e.preventDefault()
+          if (!input.trim()) return
+          sendUserMessage(input.trim())
+          setMessages((prev) => [...prev, { speaker: 'user', text: input.trim() }])
+          setInput('')
+        }}
+      >
+        <input
+          className="input flex-1"
+          placeholder="Type to message the agent…"
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value)
+            sendUserActivity()
+          }}
+        />
+        <button className="btn" type="submit">Send</button>
+      </form>
+
+      <details className="mt-3">
+        <summary className="text-xs text-slate-500 cursor-pointer">Debug</summary>
+        <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-2 space-y-1 max-h-32 overflow-auto">
+          {logs.map((l, i) => <div key={i}>{l}</div>)}
+        </div>
+      </details>
+    </div>
+  )
+}
+
+function StatusPill({ label, tone, pulse }: { label: string; tone: 'good' | 'warn' | 'accent' | 'idle'; pulse?: boolean }) {
+  const toneClass = tone === 'good'
+    ? 'bg-emerald-100 text-emerald-700'
+    : tone === 'warn'
+      ? 'bg-amber-100 text-amber-700'
+      : tone === 'accent'
+        ? 'bg-violet-100 text-violet-700'
+        : 'bg-slate-100 text-slate-700'
+  return (
+    <div className={`text-[10px] px-2 py-1 rounded-full ${toneClass} ${pulse ? 'animate-pulse' : ''}`}>{label}</div>
+  )
+}
+
+function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focusTitle: string }) {
+  const defaultLeo = (import.meta as any).env?.VITE_ELEVEN_LEO_AGENT_ID || 'agent_8901ka69ad6eegnvkv2b4c33yj6b'
+  const defaultLuna = (import.meta as any).env?.VITE_ELEVEN_LUNA_AGENT_ID || 'agent_6401ka69c4k5eg08atbsgfd0kgka'
+  const [leoId, setLeoId] = useState<string>(defaultLeo)
+  const [lunaId, setLunaId] = useState<string>(defaultLuna)
+  const [connecting, setConnecting] = useState(false)
+  const [logs, setLogs] = useState<string[]>([])
+  const [messages, setMessages] = useState<{ speaker: 'LEO' | 'LUNA'; text: string }[]>([])
+  const [leoVol, setLeoVol] = useState(0.9)
+  const [lunaVol, setLunaVol] = useState(0.9)
+
+  const [textBridge, setTextBridge] = useState(true)
+
+  const sharedOverrides = textBridge
+    ? { conversation: { textOnly: true }, agent: { firstMessage: `Hi, I am part of a duo conversation. User: ${personaName}; Focus: ${focusTitle}. Keep replies concise.` } }
+    : undefined
+
+  const leo = useConversation({
+    volume: leoVol,
+    micMuted: true,
+    overrides: sharedOverrides,
+    onStatusChange: (s) => setLogs((l) => [`LEO status: ${s}`, ...l].slice(0, 50)),
+    onModeChange: (m) => setLogs((l) => [`LEO mode: ${m}`, ...l].slice(0, 50)),
+    onError: (e) => setLogs((l) => [`LEO error: ${String(e)}`,...l].slice(0, 50)),
+    onMessage: (m: any) => {
+      try {
+        const role = (m?.role === 'assistant' || m?.role === 'agent') ? 'assistant' : m?.role
+        const text: string | undefined = m?.text ?? m?.message ?? m?.content ?? (typeof m === 'string' ? m : undefined)
+        const isFinal = m?.isFinal || m?.final || m?.type === 'assistant_message' || m?.type === 'response_completed'
+        if (role === 'assistant' && text && text.trim() && (isFinal || text.length > 12)) {
+          setMessages((prev) => [...prev, { speaker: 'LEO', text }])
+          // Forward LEO -> LUNA as user message
+          luna.sendUserMessage(text)
+        }
+      } catch (err) {
+        setLogs((l) => [`LEO msg-parse-error: ${String(err)}`,...l].slice(0, 50))
+      }
+    },
+  })
+
+  const luna = useConversation({
+    volume: lunaVol,
+    micMuted: true,
+    overrides: sharedOverrides,
+    onStatusChange: (s) => setLogs((l) => [`LUNA status: ${s}`, ...l].slice(0, 50)),
+    onModeChange: (m) => setLogs((l) => [`LUNA mode: ${m}`, ...l].slice(0, 50)),
+    onError: (e) => setLogs((l) => [`LUNA error: ${String(e)}`,...l].slice(0, 50)),
+    onMessage: (m: any) => {
+      try {
+        const role = (m?.role === 'assistant' || m?.role === 'agent') ? 'assistant' : m?.role
+        const text: string | undefined = m?.text ?? m?.message ?? m?.content ?? (typeof m === 'string' ? m : undefined)
+        const isFinal = m?.isFinal || m?.final || m?.type === 'assistant_message' || m?.type === 'response_completed'
+        if (role === 'assistant' && text && text.trim() && (isFinal || text.length > 12)) {
+          setMessages((prev) => [...prev, { speaker: 'LUNA', text }])
+          // Forward LUNA -> LEO as user message
+          leo.sendUserMessage(text)
+        }
+      } catch (err) {
+        setLogs((l) => [`LUNA msg-parse-error: ${String(err)}`,...l].slice(0, 50))
+      }
+    },
+  })
+
+  const start = async () => {
+    if (!leoId || !lunaId) {
+      alert('Enter both LEO and LUNA Agent IDs.')
+      return
+    }
+    try {
+      setConnecting(true)
+      if (!textBridge) {
+        await navigator.mediaDevices.getUserMedia({ audio: true })
+      }
+      await leo.startSession({ agentId: leoId, connectionType: textBridge ? 'websocket' : 'webrtc' })
+      await luna.startSession({ agentId: lunaId, connectionType: textBridge ? 'websocket' : 'webrtc' })
+      // Share user context with both agents
+      const ctx = `User: ${personaName}. Focus: ${focusTitle}. Please keep replies short, coordinate with your counterpart, and avoid medical advice.`
+      try { leo.sendContextualUpdate(ctx) } catch {}
+      try { luna.sendContextualUpdate(ctx) } catch {}
+      // Seed the conversation to kick off LEO -> LUNA
+      luna.sendUserMessage(`LEO: Please start the intake conversation for ${personaName} focusing on ${focusTitle}. Keep it concise.`)
+    } catch (e) {
+      console.error(e)
+      alert('Failed to start duo session. Verify IDs and permissions.')
+    } finally {
+      setConnecting(false)
+    }
+  }
+
+  const stop = async () => {
+    try { await leo.endSession() } catch {}
+    try { await luna.endSession() } catch {}
+  }
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] font-semibold">LEO</span>
+          <input className="input text-xs flex-1" placeholder="LEO Agent ID" value={leoId} onChange={(e) => setLeoId(e.target.value)} />
+          <div className="flex items-center gap-1 text-[11px] ml-auto"><span>Vol</span><input type="range" min={0} max={1} step={0.05} value={leoVol} onChange={(e) => setLeoVol(parseFloat(e.target.value))} /></div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] font-semibold">LUNA</span>
+          <input className="input text-xs flex-1" placeholder="LUNA Agent ID" value={lunaId} onChange={(e) => setLunaId(e.target.value)} />
+          <div className="flex items-center gap-1 text-[11px] ml-auto"><span>Vol</span><input type="range" min={0} max={1} step={0.05} value={lunaVol} onChange={(e) => setLunaVol(parseFloat(e.target.value))} /></div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 mb-2">
+        <button className="btn" onClick={start} disabled={connecting}> {connecting ? 'Connecting…' : 'Start Duo'} </button>
+        <button className="btn-ghost border border-slate-200 dark:border-white/10" onClick={stop}>End</button>
+        <label className="text-[11px] flex items-center gap-2 ml-2">
+          <input type="checkbox" checked={textBridge} onChange={(e) => setTextBridge(e.target.checked)} /> Text bridge (no mic)
+        </label>
+        <div className="ml-auto flex items-center gap-2 text-[11px]">
+          <StatusPill label={`LEO ${leo.isSpeaking ? 'Speaking' : 'Listening'}`} tone={leo.isSpeaking ? 'accent' : 'idle'} pulse={leo.isSpeaking} />
+          <StatusPill label={`LUNA ${luna.isSpeaking ? 'Speaking' : 'Listening'}`} tone={luna.isSpeaking ? 'accent' : 'idle'} pulse={luna.isSpeaking} />
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-auto space-y-2 pr-1">
+        {messages.length === 0 && (
+          <div className="text-xs text-slate-500">Start the duo to hear LEO and LUNA talk to each other. Messages appear here with turn-taking.</div>
+        )}
+        {messages.map((m, idx) => (
+          <div key={idx} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm ${m.speaker === 'LEO' ? 'bg-teal-600 text-white self-start rounded-bl-sm' : 'bg-violet-600 text-white self-end rounded-br-sm ml-auto'}`}>
+            <div className="text-[11px] opacity-80 mb-0.5">{m.speaker}</div>
+            <div>{m.text}</div>
+          </div>
+        ))}
+      </div>
+
+      <details className="mt-3">
+        <summary className="text-xs text-slate-500 cursor-pointer">Debug</summary>
+        <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-2 space-y-1 max-h-32 overflow-auto">
+          {logs.map((l, i) => <div key={i}>{l}</div>)}
+        </div>
+      </details>
+    </div>
+  )
+}
+
+function DuoTextTTSPanel({ personaName, focusTitle }: { personaName: string; focusTitle: string }) {
+  const apiBase = (import.meta as any).env?.VITE_API_BASE || ''
+  const [turnLimit, setTurnLimit] = useState(8)
+  const defaultLeoVoice = (import.meta as any).env?.VITE_ELEVEN_LEO_VOICE_ID || ''
+  const defaultLunaVoice = (import.meta as any).env?.VITE_ELEVEN_LUNA_VOICE_ID || ''
+  const [leoVoice, setLeoVoice] = useState<string>(defaultLeoVoice)
+  const [lunaVoice, setLunaVoice] = useState<string>(defaultLunaVoice)
+  const [messages, setMessages] = useState<{ speaker: 'LEO' | 'LUNA'; text: string }[]>([])
+  const [running, setRunning] = useState(false)
+  const abortRef = useRef<{ aborted: boolean; audio?: HTMLAudioElement }>({ aborted: false })
+  const [logs, setLogs] = useState<string[]>([])
+
+  const runDuo = async () => {
+    setRunning(true)
+    setMessages([])
+    abortRef.current.aborted = false
+    try {
+      let msgs: { speaker: 'LEO' | 'LUNA'; text: string }[] = []
+      try {
+        const res = await fetch(`${apiBase}/api/duo/run`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ turn_limit: turnLimit }) })
+        if (!res.ok) throw new Error(`duo/run ${res.status}`)
+        const data = await res.json()
+        msgs = (data?.messages || [])
+          .filter((m: any) => m?.speaker && m?.text)
+          .map((m: any) => ({ speaker: (m.speaker === 'LEO' ? 'LEO' : 'LUNA') as 'LEO' | 'LUNA', text: String(m.text) }))
+      } catch (err) {
+        setLogs((l) => [`fallback: local text loop (${String(err)})`, ...l].slice(0, 50))
+        msgs = buildLocalDuoMock(turnLimit, personaName, focusTitle)
+      }
+      setMessages(msgs)
+      // Enforce two distinct voices for playback
+      if (!leoVoice || !lunaVoice) {
+        setLogs((l) => ["tts-skip: set both LEO and LUNA voice IDs", ...l].slice(0, 50))
+        return
+      }
+      if (leoVoice === lunaVoice) {
+        setLogs((l) => ["tts-skip: voice IDs must be different", ...l].slice(0, 50))
+        return
+      }
+      for (const m of msgs) {
+        if (abortRef.current.aborted) break
+        const vid = m.speaker === 'LEO' ? leoVoice : lunaVoice
+        if (!vid) continue
+        try {
+          const audioUrl = await synth(m.text, vid)
+          if (abortRef.current.aborted) break
+          await playAudio(audioUrl)
+        } catch (e) {
+          setLogs((l) => [`tts-error: ${String(e)}`, ...l].slice(0, 50))
+        }
+      }
+    } catch (e) {
+      setLogs((l) => [`run-error: ${String(e)}`, ...l].slice(0, 50))
+    } finally {
+      setRunning(false)
+    }
+  }
+
+  const stop = () => {
+    abortRef.current.aborted = true
+    if (abortRef.current.audio) {
+      try { abortRef.current.audio.pause() } catch {}
+    }
+  }
+
+  async function synth(text: string, voiceId: string): Promise<string> {
+    const res = await fetch(`${apiBase}/api/tts`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text, voice_id: voiceId }) })
+    if (!res.ok) throw new Error(`TTS failed (${res.status})`)
+    const blob = await res.blob()
+    return URL.createObjectURL(blob)
+  }
+
+  function playAudio(url: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const audio = new Audio(url)
+      abortRef.current.audio = audio
+      audio.onended = () => resolve()
+      audio.onerror = () => reject(new Error('audio error'))
+      audio.play().catch(reject)
+    })
+  }
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-2">
+        <label className="text-xs flex items-center gap-2">
+          <span>Turns</span>
+          <input type="number" min={2} max={12} className="input text-xs w-20" value={turnLimit} onChange={(e) => setTurnLimit(parseInt(e.target.value || '8'))} />
+        </label>
+        <input className="input text-xs" placeholder="LEO Voice ID (required for TTS)" value={leoVoice} onChange={(e) => setLeoVoice(e.target.value)} />
+        <input className="input text-xs" placeholder="LUNA Voice ID (required for TTS)" value={lunaVoice} onChange={(e) => setLunaVoice(e.target.value)} />
+      </div>
+
+      <div className="flex items-center gap-2 mb-2">
+        <button className="btn" onClick={runDuo} disabled={running}>{running ? 'Running…' : 'Run Duo'}</button>
+        <button className="btn-ghost border border-slate-200 dark:border-white/10" onClick={stop}>Stop</button>
+      </div>
+
+      <div className="flex-1 overflow-auto space-y-2 pr-1">
+        {messages.length === 0 && (
+          <div className="text-xs text-slate-500">Click Run Duo to generate a LEO ↔ LUNA text conversation. If you provide voice IDs, it will play each turn via TTS.</div>
+        )}
+        {messages.map((m, idx) => (
+          <div key={idx} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm ${m.speaker === 'LEO' ? 'bg-teal-600 text-white self-start rounded-bl-sm' : 'bg-violet-600 text-white self-end rounded-br-sm ml-auto'}`}>
+            <div className="text-[11px] opacity-80 mb-0.5">{m.speaker}</div>
+            <div>{m.text}</div>
+          </div>
+        ))}
+      </div>
+
+      <details className="mt-3">
+        <summary className="text-xs text-slate-500 cursor-pointer">Debug</summary>
+        <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-2 space-y-1 max-h-32 overflow-auto">
+          {logs.map((l, i) => <div key={i}>{l}</div>)}
+        </div>
+      </details>
     </div>
   )
 }

@@ -5,12 +5,12 @@ import uuid
 from pathlib import Path
 from setup_env import setup_environment
 
-# Add tutorials directory to path for holistic_ai_bedrock import
+# Add tutorials directory to path (kept in case other tutorials are imported)
 tutorials_path = Path(__file__).parent.parent / 'tutorials'
 if tutorials_path.exists():
     sys.path.insert(0, str(tutorials_path))
 
-from holistic_ai_bedrock import get_chat_model
+from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
 from langsmith import Client
 import tiktoken
@@ -29,15 +29,14 @@ def count_tokens(text: str) -> int:
         # Fallback: rough estimate (1 token ≈ 4 characters)
         return len(str(text)) // 4
 
-# Create agent with automatic LangSmith tracing
-# Use get_chat_model() - uses Holistic AI Bedrock by default (recommended)
-llm_traced = get_chat_model("claude-3-5-sonnet")  # Uses Holistic AI Bedrock (recommended)
+# Create agent with automatic LangSmith tracing using OpenAI
+llm_traced = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
 agent_traced = create_react_agent(llm_traced, tools=[])
 
 langsmith_project = os.getenv('LANGSMITH_PROJECT', 'default')
 
 print("Agent created with automatic LangSmith tracing!")
-print(f"  Model: claude-3-5-sonnet (via Bedrock if available)")
+print(f"  Model: gpt-4.1-mini (via OpenAI)")
 print(f"  Project: {langsmith_project}")
 print(f"\nEvery agent.invoke() call will be traced to:")
 print(f"  https://smith.langchain.com")

@@ -7,7 +7,10 @@ import os
 
 DEFAULT_TEMPERATURE = 0.15
 DEFAULT_TIMEOUT = 20
-DEFAULT_MAX_TOKENS = 512
+# Allow the model enough room to complete multi-step ReAct traces without
+# constantly hitting the provider's max_tokens guardrails.
+# You can override this via context.max_output_tokens or the MAX_OUTPUT_TOKENS env var.
+DEFAULT_MAX_TOKENS = int(os.getenv("MAX_OUTPUT_TOKENS", "4096"))
 
 # Ollama is optional – only needed if you actually use local open-weight models.
 try:

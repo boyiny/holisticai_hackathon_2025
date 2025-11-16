@@ -27,6 +27,7 @@ export default function SimulationScreen() {
   const [mode, setMode] = useState<'sim' | 'live' | 'duo' | 'duoText'>('sim')
   const [agentIdInput, setAgentIdInput] = useState<string>(import.meta.env.VITE_ELEVEN_AGENT_ID || '')
   const startedAtRef = useRef<number>(Date.now())
+  const [generatedSnapshot, setGeneratedSnapshot] = useState<SnapshotSection | null>(null)
 
   useEffect(() => {
     if (!persona || !focus) return
@@ -232,7 +233,7 @@ export default function SimulationScreen() {
               <div className="text-xs text-slate-500 mt-1">Persona: <span className="font-medium">{persona.name}</span> — Focus: <span className="font-medium">{focus.title}</span></div>
             </div>
             <div className="flex items-center gap-2 text-xs">
-              <select className="input text-xs" value={mode} onChange={(e) => setMode(e.target.value as any)}>
+              <select className="input text-xs" value={mode} onChange={(e) => { setMode(e.target.value as any); setGeneratedSnapshot(null) }}>
                 <option value="sim">Simulated</option>
                 <option value="live">Live (You ↔ Agent)</option>
                 <option value="duo">Duo (Agents SDK)</option>
@@ -244,9 +245,9 @@ export default function SimulationScreen() {
           {mode === 'live' ? (
             <LiveElevenPanel agentIdInput={agentIdInput} setAgentIdInput={setAgentIdInput} personaName={persona.name} />
           ) : mode === 'duo' ? (
-            <DuoElevenPanel personaName={persona.name} focusTitle={focus.title} />
+            <DuoElevenPanel personaName={persona.name} focusTitle={focus.title} onMessagesChange={(msgs) => setGeneratedSnapshot(computeSnapshotFromMessages(msgs, persona.name, focus.title))} />
           ) : mode === 'duoText' ? (
-            <DuoTextTTSPanel personaName={persona.name} focusTitle={focus.title} />
+            <DuoTextTTSPanel personaName={persona.name} focusTitle={focus.title} onMessagesReady={(msgs) => setGeneratedSnapshot(computeSnapshotFromMessages(msgs, persona.name, focus.title))} />
           ) : (
             <>
               <div className="flex-1 overflow-auto space-y-2 pr-1">
@@ -268,35 +269,11 @@ export default function SimulationScreen() {
         <div className="lg:col-span-3 card p-4">
           <div className="font-display font-bold text-lg mb-2">Generated Longevity Snapshot</div>
           <div className="space-y-4 text-sm">
-            <Section title="Primary goals">
-              <ul className="list-disc pl-5 space-y-1">
-                {currentSnapshot.primaryGoals.map((g, i) => <li key={i}>{g}</li>)}
-              </ul>
-            </Section>
-            <Section title="Current lifestyle overview">
-              <p>{currentSnapshot.lifestyleOverview}</p>
-            </Section>
-            <Section title="Existing strengths">
-              {currentSnapshot.strengths.length ? (
-                <ul className="list-disc pl-5 space-y-1">{currentSnapshot.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
-              ) : <div className="text-slate-500">To be identified.</div>}
-            </Section>
-            <Section title="Potential lifestyle concerns (not medical advice)">
-              <ul className="list-disc pl-5 space-y-1">
-                {currentSnapshot.potentialConcerns.map((c, i) => <li key={i}>{c}</li>)}
-              </ul>
-              <div className="text-[11px] text-slate-500 mt-2">These are lifestyle patterns to explore; they are not medical diagnoses.</div>
-            </Section>
-            <Section title="Suggested habit focus areas">
-              <ul className="list-disc pl-5 space-y-1">
-                {currentSnapshot.focusAreas.map((a, i) => <li key={i}>{a}</li>)}
-              </ul>
-            </Section>
-            <Section title="Questions for human coach or clinician">
-              <ul className="list-disc pl-5 space-y-1">
-                {currentSnapshot.questionsForCoach.map((q, i) => <li key={i}>{q}</li>)}
-              </ul>
-            </Section>
+            {((mode === 'duo' || mode === 'duoText') && generatedSnapshot) ? (
+              <SnapshotView snap={generatedSnapshot} />
+            ) : (
+              <SnapshotView snap={currentSnapshot} />
+            )}
             <div className="p-3 rounded-lg border border-amber-300 bg-amber-50 text-amber-900 dark:bg-white/10 dark:border-white/20 dark:text-white/90 text-[11px]">
               This snapshot is educational and not medical advice.
             </div>
@@ -369,6 +346,60 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <div className="border-b border-slate-100 dark:border-white/10" />
     </div>
   )
+}
+
+function SnapshotView({ snap }: { snap: SnapshotSection }) {
+  return (
+    <>
+      <Section title="Primary goals">
+        <ul className="list-disc pl-5 space-y-1">
+          {snap.primaryGoals.map((g, i) => <li key={i}>{g}</li>)}
+        </ul>
+      </Section>
+      <Section title="Current lifestyle overview">
+        <p>{snap.lifestyleOverview}</p>
+      </Section>
+      <Section title="Existing strengths">
+        {snap.strengths.length ? (
+          <ul className="list-disc pl-5 space-y-1">{snap.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
+        ) : <div className="text-slate-500">To be identified.</div>}
+      </Section>
+      <Section title="Potential lifestyle concerns (not medical advice)">
+        <ul className="list-disc pl-5 space-y-1">
+          {snap.potentialConcerns.map((c, i) => <li key={i}>{c}</li>)}
+        </ul>
+        <div className="text-[11px] text-slate-500 mt-2">These are lifestyle patterns to explore; they are not medical diagnoses.</div>
+      </Section>
+      <Section title="Suggested habit focus areas">
+        <ul className="list-disc pl-5 space-y-1">
+          {snap.focusAreas.map((a, i) => <li key={i}>{a}</li>)}
+        </ul>
+      </Section>
+      <Section title="Questions for human coach or clinician">
+        <ul className="list-disc pl-5 space-y-1">
+          {snap.questionsForCoach.map((q, i) => <li key={i}>{q}</li>)}
+        </ul>
+      </Section>
+    </>
+  )
+}
+
+function computeSnapshotFromMessages(msgs: { speaker: 'LEO' | 'LUNA'; text: string }[], personaName: string, focusTitle: string): SnapshotSection {
+  const text = msgs.map(m => `${m.speaker}: ${m.text}`).join('\n')
+  const lower = text.toLowerCase()
+  const concerns: string[] = []
+  if (lower.includes('late') || lower.includes('midnight')) concerns.push('Late bedtime may reduce perceived sleep quality')
+  if (lower.includes('caffeine') || lower.includes('coffee')) concerns.push('High afternoon caffeine can delay wind-down')
+  if (lower.includes('walk') || lower.includes('exercise') || lower.includes('sedentary') || lower.includes('sitting')) concerns.push('Low weekly movement volume or prolonged sitting')
+  if (!concerns.length) concerns.push('Areas to clarify in follow-up')
+  const strengths: string[] = []
+  if (lower.includes('motiv') || lower.includes('ready') || lower.includes('willing')) strengths.push('Motivated to improve')
+  if (!strengths.length) strengths.push('Open to small habit changes')
+  const focusAreas = Array.from(new Set([focusTitle, ...(lower.includes('sleep') ? ['Sleep timing'] : []), ...(lower.includes('movement') || lower.includes('walk') ? ['Strength & Movement'] : []), ...(lower.includes('nutrition') || lower.includes('dinner') ? ['Meal timing'] : [])])).filter(Boolean)
+  const goals = [`Make progress on ${focusTitle} over the next 3–6 months`, 'Reduce lifestyle risk via sleep and movement basics']
+  const overview = msgs.slice(0, 4).map(m => `${m.speaker}: ${m.text}`).join(' ')
+  const questionsForCoach = ['Confirm safe progression for movement', 'Adjust evening routine and meal timing to fit constraints']
+  return { primaryGoals: goals, lifestyleOverview: overview || `${personaName} provided initial context.`, strengths, potentialConcerns: concerns, focusAreas, questionsForCoach }
 }
 
 function deriveStepsFromStages(stages: string[], activeIdx: number): WorkflowStepState[] {
@@ -566,7 +597,8 @@ function StatusPill({ label, tone, pulse }: { label: string; tone: 'good' | 'war
   )
 }
 
-function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focusTitle: string }) {
+function DuoElevenPanel({ personaName, focusTitle, onMessagesChange }: { personaName: string; focusTitle: string; onMessagesChange?: (msgs: { speaker: 'LEO' | 'LUNA'; text: string }[]) => void }) {
+  const apiBase = (import.meta as any).env?.VITE_API_BASE || ''
   const defaultLeo = (import.meta as any).env?.VITE_ELEVEN_LEO_AGENT_ID || 'agent_8901ka69ad6eegnvkv2b4c33yj6b'
   const defaultLuna = (import.meta as any).env?.VITE_ELEVEN_LUNA_AGENT_ID || 'agent_6401ka69c4k5eg08atbsgfd0kgka'
   const [leoId, setLeoId] = useState<string>(defaultLeo)
@@ -576,6 +608,7 @@ function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focu
   const [messages, setMessages] = useState<{ speaker: 'LEO' | 'LUNA'; text: string }[]>([])
   const [leoVol, setLeoVol] = useState(0.9)
   const [lunaVol, setLunaVol] = useState(0.9)
+  const [deviceRole, setDeviceRole] = useState<'LEO' | 'LUNA' | 'BOTH'>('BOTH')
 
   const [textBridge, setTextBridge] = useState(true)
 
@@ -596,9 +629,11 @@ function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focu
         const text: string | undefined = m?.text ?? m?.message ?? m?.content ?? (typeof m === 'string' ? m : undefined)
         const isFinal = m?.isFinal || m?.final || m?.type === 'assistant_message' || m?.type === 'response_completed'
         if (role === 'assistant' && text && text.trim() && (isFinal || text.length > 12)) {
-          setMessages((prev) => [...prev, { speaker: 'LEO', text }])
+          setMessages((prev) => { const next = [...prev, { speaker: 'LEO', text }]; onMessagesChange?.(next); return next })
           // Forward LEO -> LUNA as user message
-          luna.sendUserMessage(text)
+          if (deviceRole === 'BOTH') {
+            luna.sendUserMessage(text)
+          }
         }
       } catch (err) {
         setLogs((l) => [`LEO msg-parse-error: ${String(err)}`,...l].slice(0, 50))
@@ -619,9 +654,11 @@ function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focu
         const text: string | undefined = m?.text ?? m?.message ?? m?.content ?? (typeof m === 'string' ? m : undefined)
         const isFinal = m?.isFinal || m?.final || m?.type === 'assistant_message' || m?.type === 'response_completed'
         if (role === 'assistant' && text && text.trim() && (isFinal || text.length > 12)) {
-          setMessages((prev) => [...prev, { speaker: 'LUNA', text }])
+          setMessages((prev) => { const next = [...prev, { speaker: 'LUNA', text }]; onMessagesChange?.(next); return next })
           // Forward LUNA -> LEO as user message
-          leo.sendUserMessage(text)
+          if (deviceRole === 'BOTH') {
+            leo.sendUserMessage(text)
+          }
         }
       } catch (err) {
         setLogs((l) => [`LUNA msg-parse-error: ${String(err)}`,...l].slice(0, 50))
@@ -636,17 +673,32 @@ function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focu
     }
     try {
       setConnecting(true)
-      if (!textBridge) {
-        await navigator.mediaDevices.getUserMedia({ audio: true })
+      if (deviceRole === 'LEO' || deviceRole === 'BOTH') {
+        if (textBridge) {
+          const leoUrl = await fetch(`${apiBase}/api/eleven/signed-url?agent_id=${encodeURIComponent(leoId)}`).then(r => r.ok ? r.json() : Promise.reject(new Error(`signed-url LEO ${r.status}`)))
+          await leo.startSession({ signedUrl: leoUrl, connectionType: 'websocket' })
+        } else {
+          await navigator.mediaDevices.getUserMedia({ audio: true })
+          await leo.startSession({ agentId: leoId, connectionType: 'webrtc' })
+        }
       }
-      await leo.startSession({ agentId: leoId, connectionType: textBridge ? 'websocket' : 'webrtc' })
-      await luna.startSession({ agentId: lunaId, connectionType: textBridge ? 'websocket' : 'webrtc' })
+      if (deviceRole === 'LUNA' || deviceRole === 'BOTH') {
+        if (textBridge) {
+          const lunaUrl = await fetch(`${apiBase}/api/eleven/signed-url?agent_id=${encodeURIComponent(lunaId)}`).then(r => r.ok ? r.json() : Promise.reject(new Error(`signed-url LUNA ${r.status}`)))
+          await luna.startSession({ signedUrl: lunaUrl, connectionType: 'websocket' })
+        } else {
+          await navigator.mediaDevices.getUserMedia({ audio: true })
+          await luna.startSession({ agentId: lunaId, connectionType: 'webrtc' })
+        }
+      }
       // Share user context with both agents
       const ctx = `User: ${personaName}. Focus: ${focusTitle}. Please keep replies short, coordinate with your counterpart, and avoid medical advice.`
-      try { leo.sendContextualUpdate(ctx) } catch {}
-      try { luna.sendContextualUpdate(ctx) } catch {}
+      if (deviceRole === 'LEO' || deviceRole === 'BOTH') { try { leo.sendContextualUpdate(ctx) } catch {} }
+      if (deviceRole === 'LUNA' || deviceRole === 'BOTH') { try { luna.sendContextualUpdate(ctx) } catch {} }
       // Seed the conversation to kick off LEO -> LUNA
-      luna.sendUserMessage(`LEO: Please start the intake conversation for ${personaName} focusing on ${focusTitle}. Keep it concise.`)
+      if (deviceRole === 'BOTH') {
+        luna.sendUserMessage(`LEO: Please start the intake conversation for ${personaName} focusing on ${focusTitle}. Keep it concise.`)
+      }
     } catch (e) {
       console.error(e)
       alert('Failed to start duo session. Verify IDs and permissions.')
@@ -681,9 +733,21 @@ function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focu
         <label className="text-[11px] flex items-center gap-2 ml-2">
           <input type="checkbox" checked={textBridge} onChange={(e) => setTextBridge(e.target.checked)} /> Text bridge (no mic)
         </label>
+        <label className="text-[11px] flex items-center gap-2 ml-2">
+          This device runs:
+          <select className="input text-xs" value={deviceRole} onChange={(e) => setDeviceRole(e.target.value as any)}>
+            <option value="LEO">LEO only</option>
+            <option value="LUNA">LUNA only</option>
+            <option value="BOTH">Both</option>
+          </select>
+        </label>
         <div className="ml-auto flex items-center gap-2 text-[11px]">
-          <StatusPill label={`LEO ${leo.isSpeaking ? 'Speaking' : 'Listening'}`} tone={leo.isSpeaking ? 'accent' : 'idle'} pulse={leo.isSpeaking} />
-          <StatusPill label={`LUNA ${luna.isSpeaking ? 'Speaking' : 'Listening'}`} tone={luna.isSpeaking ? 'accent' : 'idle'} pulse={luna.isSpeaking} />
+          {(deviceRole === 'LEO' || deviceRole === 'BOTH') && (
+            <StatusPill label={`LEO ${leo.isSpeaking ? 'Speaking' : 'Listening'}`} tone={leo.isSpeaking ? 'accent' : 'idle'} pulse={leo.isSpeaking} />
+          )}
+          {(deviceRole === 'LUNA' || deviceRole === 'BOTH') && (
+            <StatusPill label={`LUNA ${luna.isSpeaking ? 'Speaking' : 'Listening'}`} tone={luna.isSpeaking ? 'accent' : 'idle'} pulse={luna.isSpeaking} />
+          )}
         </div>
       </div>
 
@@ -709,7 +773,7 @@ function DuoElevenPanel({ personaName, focusTitle }: { personaName: string; focu
   )
 }
 
-function DuoTextTTSPanel({ personaName, focusTitle }: { personaName: string; focusTitle: string }) {
+function DuoTextTTSPanel({ personaName, focusTitle, onMessagesReady }: { personaName: string; focusTitle: string; onMessagesReady?: (msgs: { speaker: 'LEO' | 'LUNA'; text: string }[]) => void }) {
   const apiBase = (import.meta as any).env?.VITE_API_BASE || ''
   const [turnLimit, setTurnLimit] = useState(8)
   const defaultLeoVoice = (import.meta as any).env?.VITE_ELEVEN_LEO_VOICE_ID || ''
@@ -739,6 +803,7 @@ function DuoTextTTSPanel({ personaName, focusTitle }: { personaName: string; foc
         msgs = buildLocalDuoMock(turnLimit, personaName, focusTitle)
       }
       setMessages(msgs)
+      onMessagesReady?.(msgs)
       // Enforce two distinct voices for playback
       if (!leoVoice || !lunaVoice) {
         setLogs((l) => ["tts-skip: set both LEO and LUNA voice IDs", ...l].slice(0, 50))

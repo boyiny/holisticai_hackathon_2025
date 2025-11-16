@@ -67,23 +67,27 @@ def create_react_agent(
 
     # Bind tools if provided
     if tools:
-        # Holistic AI Bedrock, GPT-5 and OpenAI-compatible Ollama models support native tool calling
+        # Most modern OpenAI / Bedrock / Ollama chat models support tools.
+        # Be generous here so we actually exercise tools for factual grounding.
         gpt5_models = ['gpt-5-nano', 'gpt-5-mini', 'gpt-5']
         bedrock_models = ['claude', 'llama', 'nova', 'mistral']
         model_supports_tools = (
-            context.model in gpt5_models or
-            context.model.startswith('gpt-oss') or
-            context.model.startswith('qwen3') or
-            any(bedrock_model in context.model.lower() for bedrock_model in bedrock_models) or
-            context.model.startswith('us.anthropic') or
-            context.model.startswith('us.meta') or
-            context.model.startswith('us.amazon')
+            context.model in gpt5_models
+            or context.model.startswith('gpt-4')  # e.g. gpt-4o, gpt-4o-mini
+            or context.model.startswith('gpt-oss')
+            or context.model.startswith('qwen3')
+            or any(bedrock_model in context.model.lower() for bedrock_model in bedrock_models)
+            or context.model.startswith('us.anthropic')
+            or context.model.startswith('us.meta')
+            or context.model.startswith('us.amazon')
         )
         if model_supports_tools:
             model = model.bind_tools(tools)
-            print(" Native tool calling enabled")
+            print(f" Native tool calling enabled for model {context.model}")
         else:
-            print("  Fallback tool calling mode")
+            # As a safety fallback, still bind tools — worst case the model ignores them.
+            model = model.bind_tools(tools)
+            print(f" Fallback tool binding enabled for model {context.model}")
 
     # Setup checkpointer (optional - defaults to None for simplicity and speed)
     # Users can pass their own checkpointer if they need conversation history

@@ -4,10 +4,10 @@ import { EvalReport } from "@/lib/evalTypes";
 import EvalCompareDashboard from "@/components/ui/eval-dashboard";
 
 type Props = {
-  searchParams?: {
+  searchParams: Promise<{
     left?: string;
     right?: string;
-  };
+  }>;
 };
 
 function pickDefaultIds(ids: string[], leftParam?: string, rightParam?: string) {
@@ -18,6 +18,8 @@ function pickDefaultIds(ids: string[], leftParam?: string, rightParam?: string) 
 }
 
 export default async function EvalComparePage({ searchParams }: Props) {
+  const resolvedSearchParams = await searchParams;
+
   const evals = await listEvalReports();
   if (!evals.length) {
     return (
@@ -31,7 +33,11 @@ export default async function EvalComparePage({ searchParams }: Props) {
   }
 
   const ids = evals.map((item) => item.id);
-  const { left, right } = pickDefaultIds(ids, searchParams?.left, searchParams?.right);
+  const { left, right } = pickDefaultIds(
+    ids,
+    resolvedSearchParams?.left,
+    resolvedSearchParams?.right
+  );
 
   const [leftReport, rightReport] = await Promise.all([
     left ? loadEvalReport(left) : (null as EvalReport | null),

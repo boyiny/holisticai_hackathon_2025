@@ -20,6 +20,7 @@ from .save_conversation import append_text, save_json
 from .tools_langchain import ValidateClaimsTool, ScheduleTool, set_tool_caller
 from .plan_schema import FinalPlan
 from .utils import ensure_provider_ready
+from .valyu_validation import extract_claims
 from core.react_agent import create_react_agent
 
 
@@ -146,6 +147,32 @@ def run_dual_agents(
         last = result["messages"][-1]
         content = getattr(last, "content", "")
         telemetry.append({"phase": phase, "speaker": speaker, "latency_s": dt})
+
+        # During evidence-heavy phases, explicitly ground key scientific claims via Valyu.
+        # This calls the ValidateClaimsTool directly so grounding shows up as a LangSmith tool run
+        # even if the model does not autonomously choose to call the tool.
+        if phase in {"Audit", "FinalPlan"} and speaker == PLANNER_NAME:
+            claims = extract_claims(content, turn_index=idx, speaker=speaker)
+            if claims:
+                # Find the validation tool instance
+                validation_tool = next(
+                    (t for t in tools if isinstance(t, ValidateClaimsTool)),
+                    None,
+                )
+                if validation_tool is not None:
+                    set_tool_caller(speaker)
+                    try:
+                        val_results = validation_tool.invoke(
+                            {
+                                "claims": [c.text for c in claims],
+                                "context": content,
+                            }
+                        )
+                        # Persist validations into shared memory for later use / inspection
+                        for v in val_results:
+                            memory.add_validation(v)
+                    finally:
+                        set_tool_caller(None)
 
         # Record to transcript
         role = "assistant" if speaker == PLANNER_NAME else "human"

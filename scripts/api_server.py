@@ -62,6 +62,27 @@ class TTSRequest(BaseModel):
     model_id: str | None = None  # e.g., "eleven_multilingual_v2"
 
 
+@app.get("/api/eleven/signed-url")
+async def eleven_signed_url(agent_id: str):
+    """Return a signed URL for establishing a WebSocket ElevenLabs conversation for a given public agent.
+
+    Do NOT expose the API key to the client; this endpoint signs on server.
+    """
+    load_dotenv(override=False)
+    api_key = os.getenv("ELEVENLABS_API_KEY")
+    if not api_key:
+        raise HTTPException(500, detail="ELEVENLABS_API_KEY missing on server")
+    import httpx
+    url = f"https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id={agent_id}"
+    headers = {"xi-api-key": api_key}
+    async with httpx.AsyncClient(timeout=20.0) as client:
+        r = await client.get(url, headers=headers)
+        if r.status_code != 200:
+            raise HTTPException(500, detail=f"Failed to get signed URL: {r.status_code} {r.text[:200]}")
+        body = r.json()
+        return body.get("signed_url")
+
+
 @app.get("/api/metrics/overview")
 def metrics_overview() -> Dict[str, Any]:
     index = _read_index()

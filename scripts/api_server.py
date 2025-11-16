@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -16,7 +16,10 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
+import os
+from dotenv import load_dotenv
 from longevity.longevity_conversation import run_longevity_conversation
+from longevity.dual_agents import run_dual_agents
 from scripts.run_parallel_test import run_parallel
 
 
@@ -45,6 +48,18 @@ class ParallelRequest(BaseModel):
     small_model: str | None = None
     big_model: str | None = None
     use_mock: bool = False
+
+
+class DuoRunRequest(BaseModel):
+    turn_limit: int = 8
+    model: str = "gpt-4o-mini"
+    small_model: str | None = None
+
+
+class TTSRequest(BaseModel):
+    text: str
+    voice_id: str
+    model_id: str | None = None  # e.g., "eleven_multilingual_v2"
 
 
 @app.get("/api/metrics/overview")
@@ -150,6 +165,57 @@ def run_one() -> Dict[str, Any]:
     # Quick single optimized run, for debugging
     res = run_longevity_conversation(turn_limit=4, mode="optimized")
     return res
+
+
+@app.post("/api/duo/run")
+def run_duo_agents(req: DuoRunRequest) -> Dict[str, Any]:
+    """Run the LEO↔LUNA dual-agent conversation and return the transcript messages."""
+    res = run_dual_agents(
+        turn_limit=req.turn_limit,
+        model=req.model,
+        small_model=req.small_model,
+    )
+    transcript_path = Path(res.get("transcript", ""))
+    messages: list[dict] = []
+    if transcript_path.exists():
+        try:
+            raw = transcript_path.read_text(encoding="utf-8").splitlines()
+            for line in raw:
+                if not line.strip():
+                    continue
+                # Expect lines like "Health Advocate: ..." or "Service Planner: ..."
+                if ":" in line:
+                    speaker, text = line.split(":", 1)
+                    sp = speaker.strip()
+                    role = "LEO" if sp.lower().startswith("health advocate") else ("LUNA" if sp.lower().startswith("service planner") else sp)
+                    messages.append({"speaker": role, "text": text.strip()})
+        except Exception:
+            pass
+    return {"outputs_dir": res.get("outputs_dir"), "messages": messages}
+
+
+@app.post("/api/tts")
+async def tts(req: TTSRequest):
+    """Synthesize speech for given text using ElevenLabs TTS and return audio/mpeg bytes."""
+    load_dotenv(override=False)
+    api_key = os.getenv("ELEVENLABS_API_KEY")
+    if not api_key:
+        raise HTTPException(500, detail="ELEVENLABS_API_KEY missing on server")
+    import httpx
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{req.voice_id}/stream"
+    payload = {"text": req.text}
+    if req.model_id:
+        payload["model_id"] = req.model_id
+    headers = {
+        "xi-api-key": api_key,
+        "accept": "audio/mpeg",
+        "content-type": "application/json",
+    }
+    async with httpx.AsyncClient(timeout=60.0) as client:
+        r = await client.post(url, headers=headers, json=payload)
+        if r.status_code != 200:
+            raise HTTPException(500, detail=f"TTS failed: {r.status_code} {r.text[:200]}")
+        return Response(content=r.content, media_type="audio/mpeg")
 
 
 def _read_index() -> List[Dict[str, Any]]:

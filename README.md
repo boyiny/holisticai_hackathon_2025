@@ -284,6 +284,11 @@ For complete submission guidelines, see [HACKATHON_RULES.md](./docs/HACKATHON_RU
 
 ---
 
+## Performance optimization
+Slow run ~300s: https://smith.langchain.com/public/5a6c1c09-7812-4721-931b-6c57579fdce8/r
+fast run 80s:
+
+
 <div align="center">
 
 **Ready to build the future of AI agents?**

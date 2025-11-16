@@ -26,12 +26,19 @@ export default function LifePersona() {
   const nav = useNavigate()
   const { persona, focus, setPersona, setFocus } = useLife()
   const [images, setImages] = useState<Record<string, string>>({})
+  const [clickedButton, setClickedButton] = useState<string | null>(null)
   const canLaunch = !!persona && !!focus
 
   const onUpload = (name: string, file: File | null) => {
     if (!file) return
     const url = URL.createObjectURL(file)
     setImages(prev => ({ ...prev, [name]: url }))
+  }
+
+  const handleButtonClick = (buttonId: string, action: () => void) => {
+    setClickedButton(buttonId)
+    action()
+    setTimeout(() => setClickedButton(null), 300)
   }
 
   return (
@@ -62,8 +69,21 @@ export default function LifePersona() {
                 <div className="font-semibold">{p.name} · {p.age}</div>
                 <div className="text-sm text-slate-600 dark:text-slate-300 mt-1">{p.summary}</div>
                 <div className="mt-3 flex gap-2">
-                  <button onClick={() => setPersona(p)} className={`btn-ghost border text-xs ${active ? 'border-accent' : 'border-slate-200 dark:border-white/10'}`}>Select</button>
-                  <label htmlFor={inputId} className="btn-ghost border border-slate-200 dark:border-white/10 text-xs cursor-pointer">Upload</label>
+                  <button 
+                    onClick={() => handleButtonClick(`select-${p.name}`, () => setPersona(p))} 
+                    className={`btn-ghost border text-xs relative overflow-hidden transition-all ${
+                      active 
+                        ? 'border-accent bg-accent/10 text-accent font-medium' 
+                        : 'border-slate-200 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-white/20'
+                    } ${
+                      clickedButton === `select-${p.name}` ? 'ring-2 ring-accent ring-offset-2' : ''
+                    }`}
+                  >
+                    Select
+                  </button>
+                  <label htmlFor={inputId} className="btn-ghost border border-slate-200 dark:border-white/10 text-xs cursor-pointer hover:bg-slate-200 dark:hover:bg-white/20 active:bg-slate-300 dark:active:bg-white/30 transition-all">
+                    Upload
+                  </label>
                   <input id={inputId} type="file" accept="image/*" className="hidden" onChange={(e) => onUpload(p.name, e.target.files?.[0] || null)} />
                 </div>
               </div>
@@ -78,8 +98,16 @@ export default function LifePersona() {
           {focusAreas.map(f => {
             const active = focus?.title === f.title
             return (
-              <button key={f.title} onClick={() => setFocus(f)} className={`text-left card p-4 transition border-2 ${active ? 'border-accent' : 'border-transparent'}`}>
-                <div className="font-semibold">{f.title}</div>
+              <button 
+                key={f.title} 
+                onClick={() => setFocus(f)} 
+                className={`text-left card p-4 transition-all border-2 ${
+                  active 
+                    ? 'border-accent bg-accent/10 shadow-md scale-[1.02]' 
+                    : 'border-transparent hover:border-slate-300 dark:hover:border-white/20 hover:shadow-sm active:scale-[0.98]'
+                }`}
+              >
+                <div className={`font-semibold ${active ? 'text-accent' : ''}`}>{f.title}</div>
                 <div className="text-sm text-slate-600 dark:text-slate-300 mt-1">{f.description}</div>
               </button>
             )

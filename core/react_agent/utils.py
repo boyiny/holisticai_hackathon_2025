@@ -5,6 +5,10 @@ from langchain_core.messages import BaseMessage
 from langchain_openai import ChatOpenAI
 import os
 
+DEFAULT_TEMPERATURE = 0.15
+DEFAULT_TIMEOUT = 20
+DEFAULT_MAX_TOKENS = 512
+
 # Ollama is optional – only needed if you actually use local open-weight models.
 try:
     from langchain_ollama import ChatOllama
@@ -33,12 +37,26 @@ def load_chat_model(model_name: str, context=None) -> BaseChatModel:
     try:
         # Use context configuration if provided, otherwise use defaults
         if context is not None:
-            temperature = getattr(context, 'temperature', context.ollama_temperature if hasattr(context, 'ollama_temperature') else 0.7)
-            timeout = context.ollama_timeout if hasattr(context, 'ollama_timeout') else 60
+            temperature = getattr(
+                context,
+                'temperature',
+                getattr(context, 'ollama_temperature', DEFAULT_TEMPERATURE),
+            )
+            timeout = getattr(
+                context,
+                'timeout',
+                getattr(context, 'ollama_timeout', DEFAULT_TIMEOUT),
+            )
+            max_tokens = getattr(
+                context,
+                'max_output_tokens',
+                getattr(context, 'ollama_num_predict', DEFAULT_MAX_TOKENS),
+            )
         else:
-            temperature = 0.7
-            timeout = 60
-        
+            temperature = DEFAULT_TEMPERATURE
+            timeout = DEFAULT_TIMEOUT
+            max_tokens = DEFAULT_MAX_TOKENS
+
         # OpenAI models (general) including GPT-4o family and GPT-5 series.
         # Prefer OpenAI when an API key is set and the model name looks OpenAI-like.
         openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -60,12 +78,13 @@ def load_chat_model(model_name: str, context=None) -> BaseChatModel:
                 api_key=openai_api_key,
                 temperature=float(temperature),
                 timeout=int(timeout),
+                max_tokens=int(max_tokens),
             )
 
         # Otherwise, check for Holistic AI Bedrock Proxy API.
         team_id = os.getenv("HOLISTIC_AI_TEAM_ID")
         api_token = os.getenv("HOLISTIC_AI_API_TOKEN")
-        
+
         if team_id and api_token and HolisticAIBedrockChat:
             # Map common model names to Bedrock model IDs
             bedrock_model_map = {
@@ -80,10 +99,10 @@ def load_chat_model(model_name: str, context=None) -> BaseChatModel:
                 'nova-pro': 'us.amazon.nova-pro-v1:0',
                 'nova-lite': 'us.amazon.nova-lite-v1:0',
             }
-            
+
             # Use mapped model ID or original name if it looks like a Bedrock model ID
             bedrock_model = bedrock_model_map.get(model_name.lower(), model_name)
-            
+
             print(f" Using Holistic AI Bedrock Proxy: {bedrock_model}")
             from pydantic import SecretStr
             return HolisticAIBedrockChat(
@@ -92,11 +111,12 @@ def load_chat_model(model_name: str, context=None) -> BaseChatModel:
                 model=bedrock_model,
                 temperature=float(temperature),
                 timeout=int(timeout),
+                max_tokens=int(max_tokens),
             )
-        
+
         # Open-weight models via Ollama
         base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-        
+
         # For models that support OpenAI-style tool calling, use ChatOpenAI with Ollama backend
         if model_name.startswith('gpt-oss') or model_name.startswith('qwen3'):
             print(f" Using ChatOpenAI backend for {model_name} (Ollama, native tool calling)")
@@ -106,6 +126,7 @@ def load_chat_model(model_name: str, context=None) -> BaseChatModel:
                 api_key="ollama",  # Dummy key for local Ollama
                 temperature=float(temperature),
                 timeout=int(timeout),
+                max_tokens=int(max_tokens),
             )
         else:
             # For other Ollama models, use standard ChatOllama (if available)
@@ -121,7 +142,7 @@ def load_chat_model(model_name: str, context=None) -> BaseChatModel:
                 temperature=temperature,
                 timeout=timeout,
             )
-            
+
     except Exception as e:
         if 'holistic' in str(e).lower() or 'bedrock' in str(e).lower():
             print(f" Failed to connect to Holistic AI Bedrock Proxy with model '{model_name}': {e}")

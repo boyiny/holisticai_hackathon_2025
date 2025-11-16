@@ -36,6 +36,9 @@ PHASES = [
 ]
 
 
+LOW_STAKES_PHASES = {"Start", "Intake", "PlanReview", "Revision"}
+
+
 @traceable(name="Dual Agents Longevity Conversation", run_type="chain")
 def run_dual_agents(
     turn_limit: int = 10,
@@ -45,12 +48,12 @@ def run_dual_agents(
     company_resource: str | Path = "company_resource.txt",
     output_dir: str | Path = "data",
     use_mock: bool = False,
+    small_model: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Run two separate agents (LEO = Advocate, LUNA = Planner) sending messages back and forth per phases.
 
     Returns a dict with paths and the FinalPlan JSON (if produced).
     """
-    load_dotenv()
     cfg = load_config(
         turn_limit=turn_limit,
         model=model,
@@ -62,6 +65,8 @@ def run_dual_agents(
     )
 
     ensure_provider_ready(cfg.model)
+    if small_model:
+        ensure_provider_ready(small_model)
 
     user = load_user_profile(cfg.user_profile_path)
     company = load_company_resource(cfg.company_resource_path)
@@ -80,21 +85,21 @@ def run_dual_agents(
     telemetry: List[dict] = []
     tools = [ValidateClaimsTool(default_url=cfg.valyu_url, telemetry=telemetry), ScheduleTool(telemetry=telemetry)]
 
+    def _create_agent(model_name: str, base_prompt: str, persona: str):
+        return create_react_agent(
+            tools=tools,
+            model_name=model_name,
+            system_prompt=(base_prompt + f"\n\nYou are {persona}. Collaborate efficiently, keep answers brief."),
+        )
+
     # Create two distinct agents with their own system prompts
-    leo_agent = create_react_agent(
-        tools=tools,
-        model_name=cfg.model,
-        system_prompt=(profiles.advocate_system + "\n\nYou are LEO (user-facing). Collaborate with LUNA. Keep non-medical."),
-    )
-    luna_agent = create_react_agent(
-        tools=tools,
-        model_name=cfg.model,
-        system_prompt=(profiles.planner_system + "\n\nYou are LUNA (backend). Audit, schedule, validate. Keep non-medical."),
-    )
+    leo_agent = _create_agent(cfg.model, profiles.advocate_system, "LEO (user-facing)")
+    luna_agent = _create_agent(cfg.model, profiles.planner_system, "LUNA (backend)")
+
+    fast_leo_agent = _create_agent(small_model, profiles.advocate_system, "LEO (fast)") if small_model else None
+    fast_luna_agent = _create_agent(small_model, profiles.planner_system, "LUNA (fast)") if small_model else None
 
     transcript: List[Tuple[str, str]] = []
-    telemetry: List[dict] = []
-
     # Seed message from LEO
     seed = seed_message_for_advocate(user)
     transcript.append(("advocate", seed))
@@ -106,7 +111,7 @@ def run_dual_agents(
     for idx, (phase, speaker) in enumerate(PHASES):
         if idx >= cfg.turn_limit:
             break
-        hint = ("human", f"[phase] {phase} | [shared_memory] {memory.render_brief()}")
+        hint = ("human", f"[phase:{phase}] context: {memory.render_brief()}")
         messages = [HumanMessage(content=transcript[-1][1])] if transcript else []
         messages.append(HumanMessage(content=hint[1]))
 
@@ -128,10 +133,13 @@ def run_dual_agents(
                 "thread_id": conversation_id,
             },
         }
+        use_fast = small_model and phase in LOW_STAKES_PHASES
         if speaker == ADVOCATE_NAME:
-            result = leo_agent.invoke({"messages": messages}, config=config)
+            agent = fast_leo_agent if use_fast and fast_leo_agent else leo_agent
         else:
-            result = luna_agent.invoke({"messages": messages}, config=config)
+            agent = fast_luna_agent if use_fast and fast_luna_agent else luna_agent
+
+        result = agent.invoke({"messages": messages}, config=config)
         dt = time.perf_counter() - t0
         set_tool_caller(None)
 

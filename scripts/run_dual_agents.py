@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--user-profile", type=str, default="user_info.json")
     parser.add_argument("--company-resource", type=str, default="company_resource.txt")
     parser.add_argument("--output-dir", type=str, default="data")
+    parser.add_argument("--small-model", type=str, default=None, help="Optional faster model for low-stakes phases")
     args = parser.parse_args()
 
     res = run_dual_agents(
@@ -28,6 +29,7 @@ def main():
         user_profile=args.user_profile,
         company_resource=args.company_resource,
         output_dir=args.output_dir,
+        small_model=args.small_model,
     )
     print(json.dumps(res, indent=2))
 

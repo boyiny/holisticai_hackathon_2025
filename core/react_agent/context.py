@@ -36,27 +36,42 @@ class Context:
             "description": "The maximum number of search results to return for each search query."
         },
     )
-    
-    # Ollama 
+
+    # Ollama
     ollama_temperature: float = field(
         default=0.1,
         metadata={
             "description": "Temperature for Ollama model (0.0 to 1.0)"
         },
     )
-    
+
     ollama_timeout: int = field(
         default=60,
         metadata={
             "description": "Timeout for Ollama requests in seconds"
         },
     )
-    
+
     ollama_num_predict: int = field(
         default=256,
         metadata={
             "description": "Maximum number of tokens to predict"
         },
+    )
+
+    temperature: float = field(
+        default=0.15,
+        metadata={"description": "Default temperature for models that support it"},
+    )
+
+    timeout: int = field(
+        default=20,
+        metadata={"description": "Default timeout in seconds for chat model calls"},
+    )
+
+    max_output_tokens: int = field(
+        default=512,
+        metadata={"description": "Preferred maximum number of tokens per response"},
     )
 
     def __post_init__(self) -> None:

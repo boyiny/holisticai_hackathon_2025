@@ -1,0 +1,65 @@
+{
+  "scenario": "scheduler_failures",
+  "chaos_config": {
+    "enabled": true,
+    "jitter_min_ms": 0,
+    "jitter_max_ms": 200,
+    "network_fail_prob": 0.0,
+    "tool_fail_prob": 0.5,
+    "llm_bad_output_prob": 0.0
+  },
+  "summary": {
+    "scenario": "scheduler_failures",
+    "num_runs": 4,
+    "concurrency": 2,
+    "elapsed_s": 38.076,
+    "success_rate": 0.0,
+    "p50_latency_ms": 19658,
+    "p95_latency_ms": 23390,
+    "avg_latency_ms": 17317,
+    "error_count": 0,
+    "errors_sample": []
+  },
+  "runs": [
+    {
+      "run_id": "longevity_plan_20251116_113724",
+      "scenario": "scheduler_failures",
+      "success": false,
+      "latency_ms": 11537,
+      "outputs_dir": "data/longevity_plan_20251116_113724",
+      "telemetry": "data/longevity_plan_20251116_113724/telemetry.json",
+      "final_plan": null,
+      "errors": []
+    },
+    {
+      "run_id": "longevity_plan_20251116_113724",
+      "scenario": "scheduler_failures",
+      "success": false,
+      "latency_ms": 14683,
+      "outputs_dir": "data/longevity_plan_20251116_113724",
+      "telemetry": "data/longevity_plan_20251116_113724/telemetry.json",
+      "final_plan": null,
+      "errors": []
+    },
+    {
+      "run_id": "longevity_plan_20251116_113736",
+      "scenario": "scheduler_failures",
+      "success": false,
+      "latency_ms": 19658,
+      "outputs_dir": "data/longevity_plan_20251116_113736",
+      "telemetry": "data/longevity_plan_20251116_113736/telemetry.json",
+      "final_plan": null,
+      "errors": []
+    },
+    {
+      "run_id": "longevity_plan_20251116_113739",
+      "scenario": "scheduler_failures",
+      "success": false,
+      "latency_ms": 23390,
+      "outputs_dir": "data/longevity_plan_20251116_113739",
+      "telemetry": "data/longevity_plan_20251116_113739/telemetry.json",
+      "final_plan": null,
+      "errors": []
+    }
+  ]
+}

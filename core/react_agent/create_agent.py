@@ -10,6 +10,15 @@ from pydantic import BaseModel
 from .context import Context
 from .state import InputState, State
 
+try:
+    from longevity.chaos_layer import apply_network_chaos, maybe_corrupt_llm_output
+except Exception:  # pragma: no cover - longevity package may be unavailable
+    def apply_network_chaos() -> None:
+        return None
+
+    def maybe_corrupt_llm_output(text):
+        return text
+
 
 def create_react_agent(
     tools: List[Callable[..., Any]],
@@ -105,10 +114,13 @@ def create_react_agent(
         messages_to_send.append(SystemMessage(content=system_message))
         messages_to_send.extend(state.messages)
 
+        apply_network_chaos()
         response = cast(
             AIMessage,
             model.invoke(messages_to_send),
         )
+        if isinstance(response.content, str):
+            response.content = maybe_corrupt_llm_output(response.content)
 
         if state.is_last_step and response.tool_calls:
             return {

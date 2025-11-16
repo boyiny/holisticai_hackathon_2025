@@ -14,6 +14,7 @@ def set_tool_caller(name: Optional[str]):
 
 from .valyu_validation import validate_claims
 from .scheduling.clinic_scheduler import generate_slots, find_available_slots, book_slot
+from .chaos_layer import apply_tool_chaos, ChaosToolError
 
 
 class ValidateClaimsInput(BaseModel):
@@ -86,6 +87,10 @@ class ScheduleTool(BaseTool):
         slots = generate_slots(seed=42)
         booked = []
         for svc in services:
+            try:
+                apply_tool_chaos()
+            except ChaosToolError:
+                continue
             avail = find_available_slots(slots, svc)
             if not avail:
                 continue

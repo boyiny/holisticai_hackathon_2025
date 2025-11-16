@@ -1,0 +1,47 @@
+[
+  {
+    "phase": "Start",
+    "speaker": "Health Advocate",
+    "latency_s": 10.669186333019752
+  },
+  {
+    "phase": "Intake",
+    "speaker": "Health Advocate",
+    "latency_s": 2.26651641598437
+  },
+  {
+    "phase": "PlanDraft",
+    "speaker": "Service Planner",
+    "latency_s": 1.2274783329921775
+  },
+  {
+    "phase": "PlanReview",
+    "speaker": "Health Advocate",
+    "latency_s": 1.9581286250031553
+  },
+  {
+    "phase": "Audit",
+    "speaker": "Service Planner",
+    "latency_s": 5.636738542001694
+  },
+  {
+    "phase": "Revision",
+    "speaker": "Health Advocate",
+    "latency_s": 5.593822875001933
+  },
+  {
+    "phase": "FinalPlan",
+    "speaker": "Service Planner",
+    "latency_s": 5.3438996670010965
+  },
+  {
+    "phase": "Scheduling",
+    "speaker": "Service Planner",
+    "latency_s": 4.809901208005613
+  },
+  {
+    "phase": "FinalSummary",
+    "speaker": "Health Advocate",
+    "latency_s": 3.549354416987626
+  }
+]

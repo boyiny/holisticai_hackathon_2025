@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useLife } from '../../context/LifeContext'
+import { WorkflowTimeline, type WorkflowStepState, type StepId } from '../../components/WorkflowTimeline'
 
 type SnapshotSection = {
   primaryGoals: string[]
@@ -301,6 +302,12 @@ export default function SimulationScreen() {
           <FlowBar stages={STAGES} activeIndex={stageIndex} />
         </div>
       </div>
+
+      {/* Workflow lane */}
+      <div className="card p-4">
+        <div className="font-display font-bold text-lg mb-2">LEO ↔ LUNA Workflow</div>
+        <WorkflowTimeline steps={deriveStepsFromStages(STAGES, stageIndex)} currentStepId={STAGES[stageIndex] as StepId} />
+      </div>
     </div>
   )
 }
@@ -315,6 +322,37 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   )
 }
 
+function deriveStepsFromStages(stages: string[], activeIdx: number): WorkflowStepState[] {
+  const agentByStep: Record<string, 'LEO' | 'LUNA'> = {
+    Start: 'LEO',
+    Intake: 'LEO',
+    PlanDraft: 'LEO',
+    PlanReview: 'LEO',
+    Audit: 'LUNA',
+    Revision: 'LEO',
+    FinalPlan: 'LUNA',
+    Scheduling: 'LUNA',
+    FinalSummary: 'LEO',
+  }
+  const desc: Record<string, string> = {
+    Start: 'Initialize context, welcome user',
+    Intake: 'Collect routines, goals, constraints',
+    PlanDraft: 'Generate initial plan from intake',
+    PlanReview: 'Self-check before handoff',
+    Audit: 'Safety + guideline audit, evidence tags',
+    Revision: 'Update plan using audit feedback',
+    FinalPlan: 'Verify consistency, approve',
+    Scheduling: 'Create schedule for sessions',
+    FinalSummary: 'Explain plan and next steps',
+  }
+  return stages.map((id, i) => ({
+    id: id as StepId,
+    title: id,
+    description: desc[id] || '',
+    responsibleAgent: agentByStep[id],
+    status: i < activeIdx ? 'success' : i === activeIdx ? 'running' : 'pending',
+  }))
+}
 function FlowBar({ stages, activeIndex }: { stages: string[]; activeIndex: number }) {
   return (
     <div className="flex items-center gap-2 overflow-auto">

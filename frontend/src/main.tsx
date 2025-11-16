@@ -19,22 +19,24 @@ import SimulationScreen from './pages/life/SimulationScreen'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout />}> 
-          <Route path="/" element={<Navigate to="/overview" replace />} />
-          <Route path="/overview" element={<Overview />} />
-          <Route path="/agents" element={<Agents />} />
-          <Route path="/workflow" element={<Workflow />} />
-          <Route path="/tools" element={<Tools />} />
-          <Route path="/analysis" element={<Analysis />} />
-          <Route path="/tests" element={<Tests />} />
-          <Route path="/runs/:id" element={<RunDetail />} />
-          <Route path="/life" element={<LifeIntro />} />
-          <Route path="/life/persona" element={<LifePersona />} />
-          <Route path="/life/explain" element={<LifeExplain />} />
-          <Route path="/life/simulate" element={<SimulationScreen />} />
-        </Route>
-      </Routes>
+      <LifeProvider>
+        <Routes>
+          <Route element={<AppLayout />}> 
+            <Route path="/" element={<Navigate to="/overview" replace />} />
+            <Route path="/overview" element={<Overview />} />
+            <Route path="/agents" element={<Agents />} />
+            <Route path="/workflow" element={<Workflow />} />
+            <Route path="/tools" element={<Tools />} />
+            <Route path="/analysis" element={<Analysis />} />
+            <Route path="/tests" element={<Tests />} />
+            <Route path="/runs/:id" element={<RunDetail />} />
+            <Route path="/life" element={<LifeIntro />} />
+            <Route path="/life/persona" element={<LifePersona />} />
+            <Route path="/life/explain" element={<LifeExplain />} />
+            <Route path="/life/simulate" element={<SimulationScreen />} />
+          </Route>
+        </Routes>
+      </LifeProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

@@ -10,7 +10,7 @@ from typing import List, Optional, Any, Iterator, Type
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import BaseMessage, AIMessage, HumanMessage, SystemMessage
 from langchain_core.callbacks import CallbackManagerForLLMRun
-from langchain_core.outputs import ChatGeneration, ChatResult
+from langchain_core.outputs import ChatGeneration, ChatResult, LLMResult
 from pydantic import Field, SecretStr, BaseModel as PydanticBaseModel
 
 
@@ -39,7 +39,23 @@ class HolisticAIBedrockChat(BaseChatModel):
 
     @property
     def _llm_type(self) -> str:
-        return "holistic_ai_bedrock"
+        # Return a model type that LangSmith recognizes for token tracking
+        # LangSmith uses this to determine pricing and token display
+        if "claude" in self.model.lower():
+            return "anthropic"  # LangSmith recognizes this for Claude models
+        elif "llama" in self.model.lower():
+            return "meta"  # LangSmith recognizes this for Llama models
+        else:
+            return "holistic_ai_bedrock"
+
+    @property
+    def _identifying_params(self) -> dict:
+        """Return identifying parameters for LangSmith tracking."""
+        return {
+            "model": self.model,
+            "model_name": self.model,  # Explicit model_name for LangSmith
+            "api_endpoint": self.api_endpoint,
+        }
 
     def _convert_messages_to_api_format(self, messages: List[BaseMessage]) -> List[dict]:
         """Convert LangChain messages to API format."""
@@ -127,7 +143,14 @@ class HolisticAIBedrockChat(BaseChatModel):
         run_manager: Optional[CallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ) -> ChatResult:
-        """Generate chat response."""
+        """Generate chat response.
+
+        Token usage is automatically calculated and included in response_metadata
+        for LangSmith tracking. The token_usage dict must have keys:
+        - prompt_tokens
+        - completion_tokens
+        - total_tokens
+        """
         tools = kwargs.get("tools") or getattr(self, "_bound_tools", None)
 
         system_prompt = self._extract_system_prompt(messages)
@@ -270,7 +293,66 @@ class HolisticAIBedrockChat(BaseChatModel):
                 message = AIMessage(content=content)
 
             generation = ChatGeneration(message=message)
-            return ChatResult(generations=[generation])
+
+            # Extract token usage from API response if available, or calculate it
+            response_metadata = {}
+            token_usage = {}
+
+            # Check if API response includes usage information
+            if "usage" in result:
+                usage = result["usage"]
+                token_usage = {
+                    "prompt_tokens": usage.get("input_tokens", usage.get("prompt_tokens", 0)),
+                    "completion_tokens": usage.get("output_tokens", usage.get("completion_tokens", 0)),
+                    "total_tokens": usage.get("total_tokens", 0)
+                }
+            else:
+                # Calculate token usage using tiktoken (Claude uses cl100k_base encoding)
+                try:
+                    import tiktoken
+                    encoding = tiktoken.get_encoding("cl100k_base")
+
+                    # Count input tokens (all messages)
+                    input_text = ""
+                    for msg in messages:
+                        if hasattr(msg, 'content'):
+                            input_text += str(msg.content) + " "
+
+                    # Count output tokens (response content)
+                    output_text = str(content)
+                    if tool_calls:
+                        output_text += str(tool_calls)
+
+                    prompt_tokens = len(encoding.encode(input_text))
+                    completion_tokens = len(encoding.encode(output_text))
+
+                    token_usage = {
+                        "prompt_tokens": prompt_tokens,
+                        "completion_tokens": completion_tokens,
+                        "total_tokens": prompt_tokens + completion_tokens
+                    }
+                except ImportError:
+                    # tiktoken not available, skip token counting
+                    pass
+                except Exception as e:
+                    # Error calculating tokens, skip
+                    pass
+
+            if token_usage:
+                # LangSmith expects token_usage in response_metadata with specific keys
+                # Format must match exactly: {"token_usage": {"prompt_tokens": int, "completion_tokens": int, "total_tokens": int}}
+                # Ensure all values are integers
+                response_metadata["token_usage"] = {
+                    "prompt_tokens": int(token_usage.get("prompt_tokens", 0)),
+                    "completion_tokens": int(token_usage.get("completion_tokens", 0)),
+                    "total_tokens": int(token_usage.get("total_tokens", 0))
+                }
+
+            # Always return response_metadata (even if empty) - LangSmith expects it
+            return ChatResult(
+                generations=[generation],
+                response_metadata=response_metadata
+            )
 
         except requests.exceptions.RequestException as e:
             error_msg = f"Error calling Holistic AI Bedrock API: {e}"

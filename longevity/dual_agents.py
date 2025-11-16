@@ -148,12 +148,18 @@ def run_dual_agents(
         content = getattr(last, "content", "")
         telemetry.append({"phase": phase, "speaker": speaker, "latency_s": dt})
 
-        # During evidence-heavy phases, explicitly ground key scientific claims via Valyu.
+        # During evidence-heavy phases, explicitly ground content via Valyu.
         # This calls the ValidateClaimsTool directly so grounding shows up as a LangSmith tool run
         # even if the model does not autonomously choose to call the tool.
         if phase in {"Audit", "FinalPlan"} and speaker == PLANNER_NAME:
-            claims = extract_claims(content, turn_index=idx, speaker=speaker)
-            if claims:
+            extracted_claims = extract_claims(content, turn_index=idx, speaker=speaker)
+            # If the heuristic extractor finds nothing, fall back to treating the whole
+            # planner message as a single "claim" so we still exercise Valyu grounding.
+            claim_texts = [c.text for c in extracted_claims] if extracted_claims else []
+            if not claim_texts and content.strip():
+                claim_texts = [content.strip()]
+
+            if claim_texts:
                 # Find the validation tool instance
                 validation_tool = next(
                     (t for t in tools if isinstance(t, ValidateClaimsTool)),
@@ -164,7 +170,7 @@ def run_dual_agents(
                     try:
                         val_results = validation_tool.invoke(
                             {
-                                "claims": [c.text for c in claims],
+                                "claims": claim_texts,
                                 "context": content,
                             }
                         )

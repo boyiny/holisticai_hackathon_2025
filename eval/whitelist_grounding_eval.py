@@ -93,7 +93,7 @@ def run_whitelisted_search(
     country: Optional[str] = None,
     fast_mode: bool = False,
     valyu_api_key: Optional[str] = None,
-) -> Tuple[List[str], List[str]]:
+    ) -> Tuple[List[str], List[str]]:
     retriever = ValyuRetriever(
         k=k,
         search_type="all",
@@ -102,7 +102,8 @@ def run_whitelisted_search(
         fast_mode=fast_mode,
         valyu_api_key=valyu_api_key,
     )
-    docs = retriever.get_relevant_documents(query)
+    # Modern LangChain retrievers are Runnables; use .invoke() to fetch docs.
+    docs = retriever.invoke(query)
     urls = [d.metadata.get("url") for d in docs if d.metadata.get("url")]
     domains = [_domain_from_url(u) or "" for u in urls]
     return urls, domains

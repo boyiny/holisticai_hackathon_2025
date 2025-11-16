@@ -37,8 +37,8 @@ type MetricDef = {
 
 const METRICS: MetricDef[] = [
   { key: "avg_collaboration", label: "Collaboration" },
-  { key: "avg_alignment_a", label: "Alignment A" },
-  { key: "avg_alignment_b", label: "Alignment B" },
+  { key: "avg_alignment_a", label: "Scientific Grounding" },
+  { key: "avg_alignment_b", label: "Alignment" },
   { key: "avg_reasoning_depth", label: "Reasoning Depth" },
   { key: "avg_consistency", label: "Consistency" },
 ];

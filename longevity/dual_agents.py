@@ -6,7 +6,12 @@ from pathlib import Path
 from typing import List, Tuple, Dict, Any, Optional
 
 from dotenv import load_dotenv
+
+# Load environment early so LangSmith / OpenAI keys from .env are available
+load_dotenv(override=False)
+
 from langchain_core.messages import HumanMessage
+from langsmith.run_helpers import traceable
 
 from .config import load_config
 from .longevity_agents import build_agent_profiles, load_user_profile, load_company_resource, ADVOCATE_NAME, PLANNER_NAME, seed_message_for_advocate
@@ -31,6 +36,7 @@ PHASES = [
 ]
 
 
+@traceable(name="Dual Agents Longevity Conversation", run_type="chain")
 def run_dual_agents(
     turn_limit: int = 10,
     model: str = "gpt-4o-mini",
@@ -62,6 +68,7 @@ def run_dual_agents(
     profiles = build_agent_profiles(user, company)
 
     run_dir = cfg.make_run_dir()
+    conversation_id = run_dir.name
     transcript_path = run_dir / "conversation_history.txt"
     telemetry_path = run_dir / "telemetry.json"
     final_plan_path = run_dir / "final_plan.json"
@@ -91,7 +98,7 @@ def run_dual_agents(
     # Seed message from LEO
     seed = seed_message_for_advocate(user)
     transcript.append(("advocate", seed))
-    append_text(transcript_path, [f"{ADVOCATE_NAME}: {seed}\n"]) 
+    append_text(transcript_path, [f"{ADVOCATE_NAME}: {seed}\n"])
 
     final_plan_obj: Optional[dict] = None
 
@@ -106,10 +113,25 @@ def run_dual_agents(
         t0 = time.perf_counter()
         # Tag the tool caller so telemetry knows which agent triggered the tool call
         set_tool_caller(speaker)
+        # Attach shared metadata so all phases of a conversation can be grouped in LangSmith
+        config = {
+            "run_name": f"DualAgents - {phase} - {speaker}",
+            "metadata": {
+                "conversation_id": conversation_id,
+                "phase": phase,
+                "speaker": speaker,
+                "outputs_dir": str(run_dir),
+            },
+            # Use a shared LangGraph/LangSmith thread id so the entire conversation
+            # appears as a single thread in the LangSmith "Threads" view.
+            "configurable": {
+                "thread_id": conversation_id,
+            },
+        }
         if speaker == ADVOCATE_NAME:
-            result = leo_agent.invoke({"messages": messages})
+            result = leo_agent.invoke({"messages": messages}, config=config)
         else:
-            result = luna_agent.invoke({"messages": messages})
+            result = luna_agent.invoke({"messages": messages}, config=config)
         dt = time.perf_counter() - t0
         set_tool_caller(None)
 
@@ -120,7 +142,7 @@ def run_dual_agents(
         # Record to transcript
         role = "assistant" if speaker == PLANNER_NAME else "human"
         transcript.append((role, content))
-        append_text(transcript_path, [f"{speaker}: {content}\n"]) 
+        append_text(transcript_path, [f"{speaker}: {content}\n"])
 
         # If this is FinalPlan or FinalSummary, try to capture structured output as FinalPlan
         if phase in {"FinalPlan", "FinalSummary"}:

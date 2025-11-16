@@ -1,0 +1,20 @@
+{
+  "id": "longevity_plan_20250101_120000",
+  "summary": {
+    "user_name": "Alice Nguyen",
+    "total_cost": 350,
+    "items": [
+      {"month": 1, "service": "baseline_bloodwork", "rationale": "Check baseline.", "evidence_flag": "ok", "appointment": {"start_iso": "2025-01-03T09:00:00Z", "price": 120}},
+      {"month": 2, "service": "vo2_test", "rationale": "Cardio fitness.", "evidence_flag": "ok", "appointment": {"start_iso": "2025-02-10T09:00:00Z", "price": 150}}
+    ],
+    "warnings": ["Evidence-uncertain items present: scan"]
+  },
+  "telemetry": [{"latency_s": 1.1},{"latency_s": 2.5},{"latency_s": 1.8}],
+  "validations": [
+    {"claim": {"text": "VO2 testing improves prediction of mortality risk."}, "validity": "true", "confidence": 0.82},
+    {"claim": {"text": "Whole body scan reduces mortality."}, "validity": "unknown", "confidence": 0.1}
+  ],
+  "conversation": "Health Advocate: I represent Alice...\nService Planner: Proposing baseline bloodwork...",
+  "bookings": []
+}
+

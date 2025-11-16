@@ -1,0 +1,14 @@
+{
+  "id": "user-001",
+  "name": "Alice Nguyen",
+  "age": 36,
+  "goals": ["improve VO2 max", "optimize sleep", "reduce LDL"],
+  "constraints": ["no invasive procedures"],
+  "budget": 1000,
+  "availability": ["weekdays morning", "some Saturdays"],
+  "biomarkers": {
+    "LDL": 140,
+    "VO2max": 36
+  }
+}
+

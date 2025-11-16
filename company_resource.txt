@@ -1,0 +1,19 @@
+Company Services and Policies
+
+Services:
+- baseline_bloodwork: includes CBC, lipid panel, fasting glucose. Contraindications: none. Price: 120
+- vo2_test: treadmill-based assessment. Contraindications: unstable cardiovascular conditions. Price: 150
+- scan: whole-body low-dose imaging. Contraindications: pregnancy. Price: 300
+- lifestyle_coaching: 30-min session. Contraindications: none. Price: 80
+
+Eligibility Rules:
+- All tests require informed consent. Medical clearance required for VO2 if cardiovascular history present.
+- Scans limited to max once per 12 months.
+
+Scheduling Policies:
+- Appointments are 1 hour slots at the clinic. Staff roles: lab tech, nurse, coach.
+- Cancellations require 24 hours notice.
+
+Disclaimers:
+- Services are educational and not medical treatment. Consult licensed clinicians for diagnosis or therapy.
+

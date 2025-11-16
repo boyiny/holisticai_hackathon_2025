@@ -1,0 +1,5 @@
+[
+  {"id":"longevity_plan_20250101_120000","timestamp":"2025-01-01T12:00:00","user":"Alice Nguyen","plan_score":null,"status":"success"},
+  {"id":"longevity_plan_20250101_121500","timestamp":"2025-01-01T12:15:00","user":"Bob","plan_score":null,"status":"warning"}
+]
+

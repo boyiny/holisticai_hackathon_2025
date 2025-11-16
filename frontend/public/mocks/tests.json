@@ -1,0 +1,8 @@
+[
+  {"name":"Consistency","file":"tests/test_consistency.py","description":"Repeated runs produce stable plans.","status":"unknown"},
+  {"name":"Chaos","file":"tests/test_chaos.py","description":"Fault injection resilience.","status":"unknown"},
+  {"name":"Load","file":"tests/test_load.py","description":"Parallel conversation runs.","status":"unknown"},
+  {"name":"Role Confusion","file":"tests/test_role_confusion.py","description":"No role flipping.","status":"unknown"},
+  {"name":"Scientific Safety","file":"tests/test_scientific_safety.py","description":"Detect unsafe claims.","status":"unknown"}
+]
+

@@ -1,0 +1,132 @@
+{
+  "user_id": "USR-2025-001",
+  "profile": {
+    "name": "Sarah Chen",
+    "age": 52,
+    "gender": "Female",
+    "date_of_birth": "1972-08-15",
+    "occupation": "Senior Software Engineer",
+    "location": "San Francisco, CA"
+  },
+  "health_metrics": {
+    "current_weight_kg": 68,
+    "height_cm": 165,
+    "bmi": 25.0,
+    "blood_pressure": {
+      "systolic": 128,
+      "diastolic": 82,
+      "last_measured": "2025-01-10"
+    },
+    "resting_heart_rate_bpm": 72,
+    "blood_glucose_mg_dl": 98,
+    "cholesterol": {
+      "total": 205,
+      "hdl": 52,
+      "ldl": 135,
+      "triglycerides": 145
+    }
+  },
+  "lifestyle_data": {
+    "sleep_hours_avg": 6.2,
+    "sleep_quality_score": 6.5,
+    "exercise_frequency_per_week": 2,
+    "exercise_types": ["walking", "occasional_yoga"],
+    "stress_level": "moderate-high",
+    "diet_pattern": "irregular_eating",
+    "alcohol_consumption": "1-2_glasses_wine_per_week",
+    "smoking_status": "never",
+    "sitting_hours_per_day": 9
+  },
+  "medical_history": {
+    "chronic_conditions": ["pre-diabetes", "mild_hypertension"],
+    "allergies": ["pollen", "shellfish"],
+    "medications": ["metformin_500mg_daily"],
+    "family_history": [
+      "mother_type2_diabetes",
+      "father_cardiovascular_disease",
+      "maternal_grandmother_alzheimers"
+    ],
+    "previous_surgeries": ["appendectomy_2008"],
+    "last_physical_exam": "2024-11-20"
+  },
+  "longevity_goals": {
+    "primary_goals": [
+      "prevent_diabetes_progression",
+      "improve_cardiovascular_health",
+      "enhance_cognitive_function",
+      "increase_energy_levels",
+      "maintain_healthy_weight"
+    ],
+    "target_lifespan_years": 95,
+    "healthspan_priorities": [
+      "mobility",
+      "mental_clarity",
+      "independence"
+    ]
+  },
+  "availability": {
+    "preferred_appointment_times": [
+      "weekday_mornings_before_9am",
+      "saturday_afternoons"
+    ],
+    "timezone": "America/Los_Angeles",
+    "booking_preferences": {
+      "advance_notice_days": 7,
+      "flexible_rescheduling": true,
+      "virtual_consultation_acceptable": true
+    },
+    "blocked_dates": [
+      "2025-02-15_to_2025-02-22",
+      "2025-04-10_to_2025-04-12"
+    ]
+  },
+  "preferences": {
+    "communication_style": "data-driven",
+    "intervention_preferences": [
+      "evidence-based",
+      "minimal_invasive",
+      "technology_assisted"
+    ],
+    "budget_range_monthly_usd": {
+      "min": 500,
+      "max": 1500
+    },
+    "willing_to_travel_for_treatment": false,
+    "dietary_restrictions": ["pescatarian"],
+    "supplement_openness": "moderate"
+  },
+  "wearable_data": {
+    "devices": ["apple_watch", "continuous_glucose_monitor"],
+    "avg_daily_steps": 5200,
+    "avg_active_minutes_per_day": 25,
+    "hrv_avg_ms": 42,
+    "vo2_max_estimate": 28
+  },
+  "biomarkers_history": {
+    "last_comprehensive_panel": "2024-11-20",
+    "notable_values": {
+      "hba1c": 5.9,
+      "crp": 2.8,
+      "vitamin_d_ng_ml": 28,
+      "omega3_index": 4.2,
+      "apoe_genotype": "e3/e4"
+    }
+  },
+  "engagement_history": {
+    "previous_programs": [
+      "weight_watchers_2019",
+      "corporate_wellness_program_2022"
+    ],
+    "adherence_rate": 0.65,
+    "barriers_to_adherence": [
+      "work_travel",
+      "time_constraints",
+      "lack_of_accountability"
+    ],
+    "motivation_factors": [
+      "family_health_concerns",
+      "desire_for_cognitive_longevity",
+      "recent_health_scare"
+    ]
+  }
+}

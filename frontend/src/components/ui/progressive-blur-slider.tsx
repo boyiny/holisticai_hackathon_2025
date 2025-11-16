@@ -1,47 +1,17 @@
-import { InfiniteSlider } from '@/components/ui/infinite-slider';
-import { ProgressiveBlur } from '@/components/ui/progressive-blur';
-
-const WORKFLOW_STEPS = [
-  'Start',
-  'Intake',
-  'PlanDraft',
-  'PlanReview',
-  'Audit',
-  'Revision',
-  'FinalPlan',
-  'Scheduling',
-  'FinalSummary',
-];
-
 export function ProgressiveBlurSlider() {
+  const steps = ['Start','Intake','PlanDraft','PlanReview','Audit','Revision','FinalPlan','Scheduling','FinalSummary']
   return (
-    <div className="relative h-[220px] w-full overflow-hidden">
-      <div className="relative h-full">
-        <InfiniteSlider className="flex h-full w-full items-center">
-          {WORKFLOW_STEPS.map((step) => (
-            <div
-              key={step}
-              className="w-32 text-center text-3xl font-[450] text-slate-900"
-            >
-              {step}
-            </div>
-          ))}
-        </InfiniteSlider>
+    <div className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white dark:from-black to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white dark:from-black to-transparent" />
+      <div className="flex gap-3 overflow-x-auto no-scrollbar py-1 pr-6">
+        {steps.map((s, i) => (
+          <div key={s} className="shrink-0 px-3 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-black text-sm">
+            {s}
+          </div>
+        ))}
       </div>
-
-      <ProgressiveBlur
-        className="pointer-events-none absolute top-0 left-0 z-10 h-full w-[200px]"
-        direction="left"
-        blurIntensity={1}
-      />
-
-      <ProgressiveBlur
-        className="pointer-events-none absolute top-0 right-0 z-10 h-full w-[200px]"
-        direction="right"
-        blurIntensity={1}
-      />
     </div>
-  );
+  )
 }
-
 

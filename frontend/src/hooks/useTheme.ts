@@ -6,8 +6,8 @@ export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem('theme') as Theme | null
     if (stored === 'light' || stored === 'dark') return stored
-    // Default to light
-    return 'light'
+    // Default to dark for demo flow
+    return 'dark'
   })
 
   useEffect(() => {
@@ -21,4 +21,3 @@ export function useTheme() {
 
   return { theme, setTheme, toggle }
 }
-

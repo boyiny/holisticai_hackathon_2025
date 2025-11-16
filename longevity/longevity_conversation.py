@@ -16,18 +16,12 @@ from .longevity_agents import (
     load_user_profile,
     seed_message_for_advocate,
 )
-from .model_router import ModelRouter
 from .save_conversation import append_text, save_json, save_text
 from .schemas import PlanItem, PlanSummary
-from .session import SessionContext
-from .tooling import concurrency_limited_validate_claims
 from .valyu_validation import extract_claims
 from .utils import call_llm, MockLLM, ensure_provider_ready
-from .scheduling.clinic_scheduler import (
-    generate_slots,
-    find_available_slots,
-    book_slot,
-)
+from .memory import SharedMemory
+from .tools import extract_requested_services, tool_schedule_services
 
 
 def run_conversation() -> None:
@@ -106,21 +100,10 @@ def run_longevity_conversation(
     telemetry_path = run_dir / "telemetry.json"
 
     # Session context and routing
-    router = None
-    if mode == "optimized":
-        router = ModelRouter(
-            small_model=small_model or cfg.model,
-            big_model=big_model or cfg.model,
-        )
-    sess = SessionContext(
-        session_id=run_id,
-        run_dir=run_dir,
-        user_profile=user,
-        clinic_profile=company_text,
-        mode=mode,
-        small_model=(small_model or cfg.model),
-        big_model=(big_model or cfg.model),
-    )
+    # Shared memory across turns
+    memory = SharedMemory()
+    memory.add_fact("user_name", user.get("name", "User"))
+    memory.add_fact("goals", user.get("goals", []))
 
     # Seed conversation
     advocate_seed = seed_message_for_advocate(user)
@@ -134,8 +117,6 @@ def run_longevity_conversation(
     def _llm_for(role_name: str, turn: int, task_type: str = ""):
         nonlocal tokens_total
         chosen_model = cfg.model
-        if router is not None:
-            chosen_model = router.choose_model(task_type=task_type, turn_index=turn, speaker=("planner" if role_name == PLANNER_NAME else "advocate"))
         if use_mock:
             mock = MockLLM(role_name)
             t0 = time.perf_counter()
@@ -145,7 +126,9 @@ def run_longevity_conversation(
             tokens_total += max(1, len(out) // 4)
             return out
         else:
-            resp, tel = call_llm(chosen_model, profiles.planner_system if role_name == PLANNER_NAME else profiles.advocate_system, transcript)
+            # Provide a brief memory state as additional context at each step
+            memory_hint = ("human", f"[shared_memory] {memory.render_brief()}")
+            resp, tel = call_llm(chosen_model, profiles.planner_system if role_name == PLANNER_NAME else profiles.advocate_system, [*transcript, memory_hint])
             telemetry_log.append({"step": len(telemetry_log) + 1, "speaker": role_name, **tel})
             tokens_total += int((len(resp) + 100) // 4)
             return resp
@@ -156,49 +139,69 @@ def run_longevity_conversation(
         planner_resp = _llm_for(PLANNER_NAME, turn, task_type="plan_synthesis" if (turn % 3 == 0) else "ack")
         append_text(transcript_path, [f"{PLANNER_NAME}: {planner_resp}\n"]) 
         transcript.append(("assistant", planner_resp))
-        collected_claims.extend(extract_claims(planner_resp, turn_index=turn, speaker=PLANNER_NAME))
+        new_claims = extract_claims(planner_resp, turn_index=turn, speaker=PLANNER_NAME)
+        collected_claims.extend(new_claims)
+        for c in new_claims:
+            memory.add_claim({"text": c.text, "turn": c.turn_index, "speaker": c.speaker})
+        telemetry_log.append({"type": "memory_update", "claims_added": len(new_claims)})
+        # Schedule services if the planner mentions them
+        req = extract_requested_services(planner_resp)
+        if req:
+            booked = tool_schedule_services(memory, req, user.get("id", user.get("name", "user")), run_dir, telemetry_log)
+            if booked:
+                transcript.append(("assistant", f"[tool:scheduler] scheduled: {', '.join(b['service_type'] for b in booked)}"))
+                append_text(transcript_path, [f"TOOL(scheduler): {', '.join(b['service_type'] for b in booked)}\n"]) 
 
         # Advocate responds
         advocate_resp = _llm_for(ADVOCATE_NAME, turn, task_type="ack")
         append_text(transcript_path, [f"{ADVOCATE_NAME}: {advocate_resp}\n"]) 
         transcript.append(("human", advocate_resp))
-        collected_claims.extend(extract_claims(advocate_resp, turn_index=turn, speaker=ADVOCATE_NAME))
+        new_claims = extract_claims(advocate_resp, turn_index=turn, speaker=ADVOCATE_NAME)
+        collected_claims.extend(new_claims)
+        for c in new_claims:
+            memory.add_claim({"text": c.text, "turn": c.turn_index, "speaker": c.speaker})
+        telemetry_log.append({"type": "memory_update", "claims_added": len(new_claims)})
 
     # Validate collected claims (best-effort)
     validations = []
     if cfg.enable_valyu and collected_claims:
-        if mode == "optimized":
-            validations = concurrency_limited_validate_claims(
-                collected_claims, cfg.valyu_url, timeout_s=cfg.valyu_timeout_s, batch=True
-            )
-        else:
-            # Defer import to avoid cycle
-            from .valyu_validation import validate_claims
-
-            validations = validate_claims(collected_claims, cfg.valyu_url, timeout_s=cfg.valyu_timeout_s, batch=True)
-        save_json(validity_path, [
+        # Defer import to avoid cycle
+        from .valyu_validation import validate_claims
+        t0 = time.perf_counter()
+        validations_list = validate_claims(collected_claims, cfg.valyu_url, timeout_s=cfg.valyu_timeout_s, batch=True)
+        dt = time.perf_counter() - t0
+        telemetry_log.append({"type": "tool", "name": "valyu_validate", "count": len(validations_list), "latency_s": dt})
+        # Save and add to memory
+        payload = [
             {
                 "claim": v.claim.__dict__,
                 "validity": v.validity,
                 "confidence": v.confidence,
                 "evidence": v.evidence,
                 "server_unavailable": v.server_unavailable,
-                "raw_response": v.raw_response,
             }
-            for v in validations
-        ])
+            for v in validations_list
+        ]
+        for p in payload:
+            memory.add_validation(p)
+        validations = payload
+        save_json(validity_path, payload)
 
     # Scheduling: propose a few concrete appointments for a fixed set of services
-    slots = generate_slots(seed=cfg.seed)
-    sess.scheduler_state["slots"] = slots
-    appointments = []
-    for svc in ["baseline_bloodwork", "vo2_test", "lifestyle_coaching"]:
-        avail = find_available_slots(slots, svc)
-        if not avail:
-            continue
-        appt = book_slot(slots, svc, user_id=user.get("id", user.get("name", "user")), persist_path=run_dir / "bookings.json")
-        if appt:
-            appointments.append(appt)
+    # Use appointments accumulated via tool calls; if none, create a simple baseline set
+    from .schemas import Appointment
+    appointments = [Appointment(**a) for a in memory.appointments]
+    if not appointments:
+        # Fallback deterministic schedule
+        from .scheduling.clinic_scheduler import generate_slots, find_available_slots, book_slot
+        slots = generate_slots(seed=cfg.seed)
+        for svc in ["baseline_bloodwork", "vo2_test", "lifestyle_coaching"]:
+            avail = find_available_slots(slots, svc)
+            if not avail:
+                continue
+            appt = book_slot(slots, svc, user_id=user.get("id", user.get("name", "user")), persist_path=run_dir / "bookings.json")
+            if appt:
+                appointments.append(appt)
 
     # Draft simple plan items and total cost
     plan_items: List[PlanItem] = []
@@ -239,6 +242,28 @@ def run_longevity_conversation(
     save_json(summary_json_path, plan_dict)
     save_json(telemetry_path, telemetry_log)
 
+    # Append to global run index for UI discovery
+    try:
+        _append_run_index(
+            outputs_dir=run_dir,
+            run_id=run_id,
+            user_name=user.get("name", "User"),
+            success=True,
+            plan=plan_dict,
+            telemetry=telemetry_log,
+            validations=[
+                {
+                    "claim": getattr(v.claim, "text", None) if hasattr(v, "claim") else None,
+                    "validity": getattr(v, "validity", None),
+                    "confidence": getattr(v, "confidence", None),
+                    "server_unavailable": getattr(v, "server_unavailable", None),
+                }
+                for v in (validations or [])
+            ],
+        )
+    except Exception:
+        pass
+
     # Shape result
     success = True
     errors: List[str] = []
@@ -255,6 +280,57 @@ def run_longevity_conversation(
         "mode": mode,
     }
     return result
+
+
+def _append_run_index(outputs_dir: Path, run_id: str, user_name: str, success: bool, plan: dict, telemetry: List[dict], validations: List[dict]) -> None:
+    """Append a compact record to data/run_index.json and write a per-run manifest.
+
+    This enables the frontend API to list runs and fetch details without scanning.
+    """
+    root = outputs_dir.parent.parent if outputs_dir.name.startswith("longevity_plan_") else outputs_dir.parent
+    data_dir = root if (root.name == "data") else outputs_dir.parent
+    index_path = data_dir / "run_index.json"
+    manifest = {
+        "id": outputs_dir.name,
+        "run_id": run_id,
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "user": user_name,
+        "status": "success" if success else "failed",
+        "plan_score": _plan_score(plan, validations),
+        "outputs_dir": str(outputs_dir),
+    }
+    # write manifest for run details
+    (outputs_dir / "manifest.json").write_text(json.dumps({
+        "id": manifest["id"],
+        "summary": plan,
+        "telemetry": telemetry,
+        "validations": validations,
+        "conversation": (outputs_dir / "conversation_history.txt").read_text(encoding="utf-8") if (outputs_dir / "conversation_history.txt").exists() else "",
+        "bookings": json.loads((outputs_dir / "bookings.json").read_text()) if (outputs_dir / "bookings.json").exists() else [],
+    }, indent=2))
+    # append to index
+    try:
+        existing = json.loads(index_path.read_text()) if index_path.exists() else []
+    except Exception:
+        existing = []
+    # de-dup by id
+    existing = [e for e in existing if e.get("id") != manifest["id"]]
+    existing.insert(0, manifest)
+    index_path.write_text(json.dumps(existing[:200], indent=2))
+
+
+def _plan_score(plan: dict, validations: List[dict]) -> float:
+    try:
+        items = plan.get("items", [])
+        if not items:
+            return 0.0
+        ok = sum(1 for it in items if (it.get("evidence_flag") == "ok"))
+        low = sum(1 for it in items if (it.get("evidence_flag") == "low"))
+        # simple heuristic score 0..100
+        score = max(0.0, 100.0 * (ok / max(1, len(items)) - 0.25 * (low / max(1, len(items)))))
+        return round(score, 1)
+    except Exception:
+        return 0.0
 
 
 def _evidence_flag_for_service(service_type: str, validations) -> str:

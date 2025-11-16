@@ -1,0 +1,38 @@
+[
+  {
+    "service_type": "lifestyle_coaching",
+    "start_iso": "2025-12-03T09:00:00Z",
+    "end_iso": "2025-12-03T10:00:00Z",
+    "staff_role": "coach",
+    "location": "Main Clinic",
+    "price": 80.0,
+    "booking_id": "f2e9030d69"
+  },
+  {
+    "service_type": "lifestyle_coaching",
+    "start_iso": "2025-12-03T09:00:00Z",
+    "end_iso": "2025-12-03T10:00:00Z",
+    "staff_role": "coach",
+    "location": "Main Clinic",
+    "price": 80.0,
+    "booking_id": "f2e9030d69"
+  },
+  {
+    "service_type": "lifestyle_coaching",
+    "start_iso": "2025-12-03T09:00:00Z",
+    "end_iso": "2025-12-03T10:00:00Z",
+    "staff_role": "coach",
+    "location": "Main Clinic",
+    "price": 80.0,
+    "booking_id": "f2e9030d69"
+  },
+  {
+    "service_type": "lifestyle_coaching",
+    "start_iso": "2025-12-03T09:00:00Z",
+    "end_iso": "2025-12-03T10:00:00Z",
+    "staff_role": "coach",
+    "location": "Main Clinic",
+    "price": 80.0,
+    "booking_id": "f2e9030d69"
+  }
+]

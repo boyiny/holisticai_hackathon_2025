@@ -1,12 +1,24 @@
-import { Outlet } from 'react-router-dom'
-import { useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import Sidebar from '../shared/Sidebar'
 import Topbar from '../shared/Topbar'
 import ThemeToggle from '../shared/ThemeToggle'
+import { LifeProvider } from '../context/LifeContext'
 import { SpiralDemo } from '../components/ui/demo'
+import { useTheme } from '../hooks/useTheme'
 
 export default function AppLayout() {
   const [showIntro, setShowIntro] = useState(true)
+  const { theme, setTheme } = useTheme()
+  const location = useLocation()
+  const inLifeFlow = location.pathname.startsWith('/life')
+
+  // Force dark theme while in Life 2.0 flow
+  useEffect(() => {
+    if (inLifeFlow && theme !== 'dark') {
+      setTheme('dark')
+    }
+  }, [inLifeFlow, theme, setTheme])
 
   return (
     <div className="relative min-h-screen flex">
@@ -15,14 +27,16 @@ export default function AppLayout() {
           <SpiralDemo onEnter={() => setShowIntro(false)} />
         </div>
       )}
-      <Sidebar />
+      {!inLifeFlow && <Sidebar />}
       <div className="flex-1 flex flex-col">
         <Topbar />
         <main className="p-6 space-y-6">
-          <Outlet />
+          <LifeProvider>
+            <Outlet />
+          </LifeProvider>
         </main>
       </div>
-      <ThemeToggle />
+      {!inLifeFlow && <ThemeToggle />}
     </div>
   )
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "step": 1,
+    "speaker": "Service Planner",
+    "latency_s": 21.27196370801539,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 2,
+    "speaker": "Health Advocate",
+    "latency_s": 17.472060791013064,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 3,
+    "speaker": "Service Planner",
+    "latency_s": 13.130696209002053,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 4,
+    "speaker": "Health Advocate",
+    "latency_s": 12.158586459001526,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 5,
+    "speaker": "Service Planner",
+    "latency_s": 5.577435499988496,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 6,
+    "speaker": "Health Advocate",
+    "latency_s": 6.786643750005169,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 7,
+    "speaker": "Service Planner",
+    "latency_s": 6.4430079580051824,
+    "provider": "gpt-4o-mini"
+  },
+  {
+    "step": 8,
+    "speaker": "Health Advocate",
+    "latency_s": 4.515940583980409,
+    "provider": "gpt-4o-mini"
+  }
+]

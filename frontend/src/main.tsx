@@ -10,6 +10,10 @@ import Tools from './pages/Tools'
 import Analysis from './pages/Analysis'
 import Tests from './pages/Tests'
 import RunDetail from './pages/RunDetail'
+import LifeIntro from './pages/life/LifeIntro'
+import LifePersona from './pages/life/LifePersona'
+import LifeExplain from './pages/life/LifeExplain'
+import { LifeProvider } from './context/LifeContext'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -24,9 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/tests" element={<Tests />} />
           <Route path="/runs/:id" element={<RunDetail />} />
+          <Route path="/life" element={<LifeIntro />} />
+          <Route path="/life/persona" element={<LifePersona />} />
+          <Route path="/life/explain" element={<LifeExplain />} />
         </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 )
-

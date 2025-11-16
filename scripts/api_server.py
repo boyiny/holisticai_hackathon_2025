@@ -1,189 +1,183 @@
 from __future__ import annotations
 
 import json
-import os
-from datetime import datetime
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+import threading
+import sys
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
+
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+# Ensure project root is on sys.path so local packages like `longevity` can be imported
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+from longevity.longevity_conversation import run_longevity_conversation
+from scripts.run_parallel_test import run_parallel
 
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "data"
-FRONTEND_DIR = ROOT / "frontend"
+app = FastAPI(title="Longevity Agent API", version="0.1")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-def _json_response(handler: SimpleHTTPRequestHandler, payload: Any, status: int = 200):
-    body = json.dumps(payload, indent=2).encode("utf-8")
-    handler.send_response(status)
-    handler.send_header("Content-Type", "application/json; charset=utf-8")
-    handler.send_header("Access-Control-Allow-Origin", "*")
-    handler.send_header("Content-Length", str(len(body)))
-    handler.end_headers()
-    handler.wfile.write(body)
+DATA_DIR = Path("data")
+DATA_DIR.mkdir(exist_ok=True)
+INTRO_PATH = Path("Intro.mp4")
 
 
-def _error(handler: SimpleHTTPRequestHandler, msg: str, code: int = 400):
-    _json_response(handler, {"error": msg}, status=code)
+class ParallelRequest(BaseModel):
+    concurrency: int = 10
+    num_runs: int = 10
+    mode: str = "optimized"  # "baseline" or "optimized"
+    turn_limit: int = 10
+    model: str = "gpt-4o-mini"
+    valyu_url: str = "http://localhost:3000/validate"
+    enable_valyu: bool = True
+    small_model: str | None = None
+    big_model: str | None = None
+    use_mock: bool = False
 
 
-def _list_runs() -> list[Dict[str, Any]]:
-    if not DATA_DIR.exists():
-        return []
-    runs = []
-    for d in sorted(DATA_DIR.iterdir()):
-        if not d.is_dir() or not d.name.startswith("longevity_plan_"):
+@app.get("/api/metrics/overview")
+def metrics_overview() -> Dict[str, Any]:
+    index = _read_index()
+    if not index:
+        return {
+            "avg_latency_s": None,
+            "avg_tokens": None,
+            "plan_consistency_score": None,
+            "scientific_validity_coverage_pct": None,
+            "runs_count": 0,
+        }
+    # Aggregate from per-run manifests
+    latencies: List[float] = []
+    tokens: List[int] = []
+    hashes: List[str] = []
+    validity_hits = 0
+    for item in index[:100]:
+        manifest = _read_manifest(Path(item["outputs_dir"]))
+        if not manifest:
             continue
-        ts = d.name.replace("longevity_plan_", "")
-        try:
-            timestamp = datetime.strptime(ts, "%Y%m%d_%H%M%S").isoformat()
-        except Exception:
-            timestamp = ts
-        summary = d / "longevity_plan_summary.json"
-        telemetry = d / "telemetry.json"
-        validity = d / "scientific_validity_checks.json"
-        user = "Unknown"
-        status = "success"
-        plan_score = None
-        try:
-            if summary.exists():
-                js = json.loads(summary.read_text())
-                user = js.get("user_name", user)
-                warnings = js.get("warnings", [])
-                status = "warning" if warnings else "success"
-        except Exception:
-            status = "failed"
-        runs.append({
-            "id": d.name,
-            "timestamp": timestamp,
-            "user": user,
-            "plan_score": plan_score,
-            "status": status,
-        })
-    return list(reversed(runs))
-
-
-def _get_run(run_id: str) -> Dict[str, Any]:
-    d = DATA_DIR / run_id
-    if not d.exists():
-        raise FileNotFoundError(run_id)
-    def _load(p: Path, default: Any) -> Any:
-        try:
-            return json.loads(p.read_text()) if p.exists() else default
-        except Exception:
-            return default
-    summary = _load(d / "longevity_plan_summary.json", {})
-    telemetry = _load(d / "telemetry.json", [])
-    validity = _load(d / "scientific_validity_checks.json", [])
-    convo = (d / "conversation_history.txt").read_text() if (d / "conversation_history.txt").exists() else ""
-    bookings = _load(d / "bookings.json", [])
-    return {
-        "id": run_id,
-        "summary": summary,
-        "telemetry": telemetry,
-        "validations": validity,
-        "conversation": convo,
-        "bookings": bookings,
-    }
-
-
-def _metrics_overview() -> Dict[str, Any]:
-    runs = _list_runs()
-    latencies = []
-    valyu_total = 0
-    valyu_unknown = 0
-    for r in runs:
-        d = DATA_DIR / r["id"]
-        try:
-            tel = json.loads((d / "telemetry.json").read_text())
-            latencies.extend([t.get("latency_s", 0) for t in tel])
-        except Exception:
-            pass
-        try:
-            checks = json.loads((d / "scientific_validity_checks.json").read_text())
-            valyu_total += len(checks)
-            valyu_unknown += sum(1 for c in checks if str(c.get("validity", "unknown")) == "unknown")
-        except Exception:
-            pass
-    avg_latency = (sum(latencies) / len(latencies)) if latencies else None
-    coverage = None
-    if valyu_total:
-        coverage = round(100 * (1 - (valyu_unknown / valyu_total)), 1)
+        lat = sum(float(t.get("latency_s", 0.0)) for t in manifest.get("telemetry", []))
+        latencies.append(lat)
+        # tokens approximated from telemetry length if not present
+        tokens.append(int(sum(len(str(t)) for t in manifest.get("telemetry", [])) // 40))
+        hashes.append(_plan_hash(manifest.get("summary", {})))
+        if manifest.get("validations"):
+            validity_hits += 1
+    avg_latency = sum(latencies) / len(latencies) if latencies else None
+    avg_tokens = int(sum(tokens) / len(tokens)) if tokens else None
+    # majority hash fraction
+    majority = max(set(hashes), key=hashes.count) if hashes else None
+    consistency = (sum(1 for h in hashes if h == majority) / len(hashes)) if hashes else None
+    validity_cov = int(100 * validity_hits / len(index)) if index else None
     return {
         "avg_latency_s": avg_latency,
-        "avg_tokens": None,
-        "plan_consistency_score": None,
-        "scientific_validity_coverage_pct": coverage,
-        "runs_count": len(runs),
+        "avg_tokens": avg_tokens,
+        "plan_consistency_score": consistency,
+        "scientific_validity_coverage_pct": validity_cov,
+        "runs_count": len(index),
     }
 
 
-def _tests_list() -> list[Dict[str, Any]]:
-    tests = [
-        {"name": "Consistency", "file": "tests/test_consistency.py", "description": "Repeated runs produce stable plans.", "status": "unknown"},
-        {"name": "Chaos", "file": "tests/test_chaos.py", "description": "Fault injection resilience.", "status": "unknown"},
-        {"name": "Load", "file": "tests/test_load.py", "description": "Parallel conversation runs.", "status": "unknown"},
-        {"name": "Role Confusion", "file": "tests/test_role_confusion.py", "description": "No role flipping.", "status": "unknown"},
-        {"name": "Scientific Safety", "file": "tests/test_scientific_safety.py", "description": "Detect unsafe claims.", "status": "unknown"},
+@app.get("/api/runs")
+def list_runs() -> List[Dict[str, Any]]:
+    index = _read_index()
+    return [
+        {
+            "id": it["id"],
+            "timestamp": it.get("timestamp"),
+            "user": it.get("user"),
+            "plan_score": it.get("plan_score"),
+            "status": it.get("status", "success"),
+        }
+        for it in index
     ]
-    return tests
 
 
-class APIServer(SimpleHTTPRequestHandler):
-    def do_OPTIONS(self):  # CORS preflight
-        self.send_response(204)
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
-        self.end_headers()
-
-    def do_GET(self):
-        if self.path.startswith("/api/"):
-            try:
-                if self.path == "/api/runs":
-                    return _json_response(self, _list_runs())
-                if self.path.startswith("/api/runs/"):
-                    run_id = self.path.split("/api/runs/")[-1]
-                    return _json_response(self, _get_run(run_id))
-                if self.path == "/api/metrics/overview":
-                    return _json_response(self, _metrics_overview())
-                if self.path == "/api/tests":
-                    return _json_response(self, _tests_list())
-                return _error(self, "Not Found", 404)
-            except FileNotFoundError:
-                return _error(self, "Run not found", 404)
-            except Exception as e:
-                return _error(self, f"Server error: {e}", 500)
-
-        # Serve frontend static files if present; SPA fallback to index.html
-        if FRONTEND_DIR.exists():
-            self.directory = str(FRONTEND_DIR)
-            # Try file first
-            target = (FRONTEND_DIR / self.path.lstrip("/")).resolve()
-            if target.is_file():
-                return super().do_GET()
-            # Otherwise, serve index.html for client routing
-            self.path = "/index.html"
-            return super().do_GET()
-        return super().do_GET()
-
-    def do_POST(self):
-        if self.path == "/api/tests/run":
-            # Stub: accept request and return scheduled=true
-            return _json_response(self, {"scheduled": True})
-        return _error(self, "Not Found", 404)
+@app.get("/api/runs/{run_id}")
+def get_run(run_id: str) -> Dict[str, Any]:
+    index = _read_index()
+    item = next((i for i in index if i.get("id") == run_id), None)
+    if not item:
+        raise HTTPException(404, detail="Run not found")
+    manifest = _read_manifest(Path(item["outputs_dir"]))
+    if not manifest:
+        raise HTTPException(404, detail="Manifest not found")
+    return {
+        "id": run_id,
+        **manifest,
+    }
 
 
-def main():
-    port = int(os.getenv("PORT", "5174"))
-    addr = ("0.0.0.0", port)
-    httpd = HTTPServer(addr, APIServer)
-    print(f"API + static server running on http://{addr[0]}:{addr[1]}")
-    print(" - /api/runs, /api/runs/<id>, /api/metrics/overview, /api/tests")
-    if FRONTEND_DIR.exists():
-        print(" - Serving frontend static from ./frontend")
-    httpd.serve_forever()
+@app.get("/assets/intro.mp4")
+def get_intro_video():
+    if not INTRO_PATH.exists():
+        raise HTTPException(404, detail="Intro video not found")
+    return FileResponse(str(INTRO_PATH), media_type="video/mp4")
+
+
+@app.post("/api/run/parallel")
+def run_parallel_endpoint(req: ParallelRequest) -> Dict[str, Any]:
+    summary = run_parallel(
+        concurrency=req.concurrency,
+        num_runs=req.num_runs,
+        mode=req.mode,
+        scenario="ui_triggered",
+        turn_limit=req.turn_limit,
+        model=req.model,
+        valyu_url=req.valyu_url,
+        enable_valyu=req.enable_valyu,
+        output_dir=DATA_DIR,
+        use_mock=req.use_mock,
+        small_model=req.small_model,
+        big_model=req.big_model,
+    )
+    return summary
+
+
+@app.post("/api/run/one")
+def run_one() -> Dict[str, Any]:
+    # Quick single optimized run, for debugging
+    res = run_longevity_conversation(turn_limit=4, mode="optimized")
+    return res
+
+
+def _read_index() -> List[Dict[str, Any]]:
+    p = DATA_DIR / "run_index.json"
+    try:
+        return json.loads(p.read_text()) if p.exists() else []
+    except Exception:
+        return []
+
+
+def _read_manifest(run_dir: Path) -> Dict[str, Any] | None:
+    mp = run_dir / "manifest.json"
+    if not mp.exists():
+        return None
+    try:
+        return json.loads(mp.read_text())
+    except Exception:
+        return None
+
+
+def _plan_hash(plan: Dict[str, Any]) -> str:
+    try:
+        return __import__("hashlib").sha256(json.dumps(plan, sort_keys=True).encode("utf-8")).hexdigest()
+    except Exception:
+        return ""
 
 
 if __name__ == "__main__":
-    main()
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=5174)

@@ -1,0 +1,122 @@
+[
+  {
+    "step": 1,
+    "speaker": "Service Planner",
+    "latency_s": 3.33995558321476e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 2,
+    "speaker": "Health Advocate",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 3,
+    "speaker": "Service Planner",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 4,
+    "speaker": "Health Advocate",
+    "latency_s": 3.7500285543501377e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 5,
+    "speaker": "Service Planner",
+    "latency_s": 3.33995558321476e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 6,
+    "speaker": "Health Advocate",
+    "latency_s": 3.3300602808594704e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 7,
+    "speaker": "Service Planner",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 8,
+    "speaker": "Health Advocate",
+    "latency_s": 2.500019036233425e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 9,
+    "speaker": "Service Planner",
+    "latency_s": 2.910092007368803e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 10,
+    "speaker": "Health Advocate",
+    "latency_s": 2.500019036233425e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 11,
+    "speaker": "Service Planner",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 12,
+    "speaker": "Health Advocate",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 13,
+    "speaker": "Service Planner",
+    "latency_s": 2.9098009690642357e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 14,
+    "speaker": "Health Advocate",
+    "latency_s": 3.3300602808594704e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 15,
+    "speaker": "Service Planner",
+    "latency_s": 2.500019036233425e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 16,
+    "speaker": "Health Advocate",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 17,
+    "speaker": "Service Planner",
+    "latency_s": 2.500019036233425e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 18,
+    "speaker": "Health Advocate",
+    "latency_s": 3.7500285543501377e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 19,
+    "speaker": "Service Planner",
+    "latency_s": 2.9199873097240925e-07,
+    "provider": "mock"
+  },
+  {
+    "step": 20,
+    "speaker": "Health Advocate",
+    "latency_s": 4.580069798976183e-07,
+    "provider": "mock"
+  }
+]

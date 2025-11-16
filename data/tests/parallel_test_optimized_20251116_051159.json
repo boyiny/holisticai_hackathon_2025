@@ -1,0 +1,3467 @@
+{
+  "summary": {
+    "mode": "optimized",
+    "num_runs": 50,
+    "concurrency": 20,
+    "elapsed_s": 0.098,
+    "success_rate": 1.0,
+    "p50_latency_ms": 0,
+    "p95_latency_ms": 0,
+    "avg_tokens_per_run": 720.0,
+    "tokens_stddev": 0.0,
+    "plan_consistency": 1.0,
+    "errors_sample": []
+  },
+  "runs": [
+    {
+      "run_id": "run_1763269919765_2216d0",
+      "scenario_id": "default-0",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919773_5f4f54",
+      "scenario_id": "default-13",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919764_77cb28",
+      "scenario_id": "default-1",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919765_c9db7e",
+      "scenario_id": "default-2",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919774_f0ef33",
+      "scenario_id": "default-14",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919771_074824",
+      "scenario_id": "default-9",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919769_c13f7e",
+      "scenario_id": "default-11",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919777_50d9d3",
+      "scenario_id": "default-17",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919771_057d07",
+      "scenario_id": "default-12",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919772_3a7f0e",
+      "scenario_id": "default-6",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919767_b79a4d",
+      "scenario_id": "default-5",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919769_4f5334",
+      "scenario_id": "default-3",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919775_c54735",
+      "scenario_id": "default-15",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919770_ee79db",
+      "scenario_id": "default-8",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919775_c5a006",
+      "scenario_id": "default-16",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919769_7f6153",
+      "scenario_id": "default-7",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919777_2e5830",
+      "scenario_id": "default-19",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919770_d914b1",
+      "scenario_id": "default-10",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919766_b532bb",
+      "scenario_id": "default-4",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919778_139077",
+      "scenario_id": "default-18",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919801_341e61",
+      "scenario_id": "default-20",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919806_4802de",
+      "scenario_id": "default-21",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919805_573f06",
+      "scenario_id": "default-22",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919810_d197fa",
+      "scenario_id": "default-25",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919808_64721d",
+      "scenario_id": "default-27",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919810_2688dc",
+      "scenario_id": "default-28",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919807_8113aa",
+      "scenario_id": "default-26",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919811_0b3cd5",
+      "scenario_id": "default-23",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919814_f02049",
+      "scenario_id": "default-35",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919813_22a925",
+      "scenario_id": "default-30",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919813_a7c442",
+      "scenario_id": "default-32",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919812_247f03",
+      "scenario_id": "default-33",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919815_3d6634",
+      "scenario_id": "default-34",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919809_3b5b47",
+      "scenario_id": "default-24",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919814_f1d189",
+      "scenario_id": "default-31",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919819_e44d0f",
+      "scenario_id": "default-38",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919810_fb8fd4",
+      "scenario_id": "default-29",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919816_37d059",
+      "scenario_id": "default-36",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919819_c2fa75",
+      "scenario_id": "default-37",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919821_20a060",
+      "scenario_id": "default-39",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919837_2311f2",
+      "scenario_id": "default-40",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919842_4d5356",
+      "scenario_id": "default-43",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919845_d64d5f",
+      "scenario_id": "default-47",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919844_877956",
+      "scenario_id": "default-46",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919846_bd78a5",
+      "scenario_id": "default-49",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919841_9aea5e",
+      "scenario_id": "default-42",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919843_d49cdb",
+      "scenario_id": "default-44",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919842_93ee79",
+      "scenario_id": "default-45",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919840_3ec0ec",
+      "scenario_id": "default-41",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    },
+    {
+      "run_id": "run_1763269919845_a631d4",
+      "scenario_id": "default-48",
+      "success": true,
+      "num_turns": 10,
+      "plan_struct": {
+        "user_name": "Alice Nguyen",
+        "total_cost": 350.0,
+        "items": [
+          {
+            "month": 1,
+            "service": "baseline_bloodwork",
+            "rationale": "Supports user goals via baseline_bloodwork.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "baseline_bloodwork",
+              "start_iso": "2025-11-03T09:00:00Z",
+              "end_iso": "2025-11-03T10:00:00Z",
+              "staff_role": "lab tech",
+              "location": "Main Clinic",
+              "price": 120.0,
+              "booking_id": "553f5ccbea"
+            }
+          },
+          {
+            "month": 2,
+            "service": "vo2_test",
+            "rationale": "Supports user goals via vo2_test.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "vo2_test",
+              "start_iso": "2025-11-10T09:00:00Z",
+              "end_iso": "2025-11-10T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 150.0,
+              "booking_id": "5cbb6fe6c4"
+            }
+          },
+          {
+            "month": 3,
+            "service": "lifestyle_coaching",
+            "rationale": "Supports user goals via lifestyle_coaching.",
+            "evidence_flag": "unknown",
+            "appointment": {
+              "service_type": "lifestyle_coaching",
+              "start_iso": "2025-12-03T09:00:00Z",
+              "end_iso": "2025-12-03T10:00:00Z",
+              "staff_role": "coach",
+              "location": "Main Clinic",
+              "price": 80.0,
+              "booking_id": "f2e9030d69"
+            }
+          }
+        ],
+        "warnings": [
+          "Evidence-uncertain items present: baseline_bloodwork, lifestyle_coaching, vo2_test. Consider clinician review."
+        ],
+        "disclaimers": [
+          "This plan is educational and not medical advice.",
+          "Discuss all interventions with a licensed clinician."
+        ]
+      },
+      "tokens_total": 720,
+      "latency_ms": 0,
+      "errors": [],
+      "outputs_dir": "data/longevity_plan_20251116_051159",
+      "mode": "optimized"
+    }
+  ]
+}
